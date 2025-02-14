@@ -41,9 +41,7 @@ const MenuList = ({ data = [], category = [], onMenuClick, onAddNewMenu, selecte
                 ))}
             </div>
 
-            {/* ✅ Filtered Menu List */}
             <div className="menu-list">
-
                 <Grid container spacing={1} >
                     <Grid item xs={6} md={4} lg={2} minHeight={200} >
                         <Paper elevation={2} style={{height:"100%",display:"flex",justifyContent:"center",backgroundColor:"#B2B2B2"}} >
