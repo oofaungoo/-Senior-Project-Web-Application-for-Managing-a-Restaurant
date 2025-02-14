@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 5,
+            "activePatchIndex": 8,
             "patches": [
                 {
                     "date": 1739554088105,
@@ -28,6 +28,18 @@
                 {
                     "date": 1739554308543,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -63,9 +63,9 @@\n         if (isEditing) {\r\n             console.log('แก้ไข user  :', userToEdit._id);\r\n             axios.put(`http://localhost:5000/api/users/${userToEdit._id}`, updatedUser)\r\n                 .then(res => {\r\n-                    console.log('User updated:', res.data);\r\n+                    console.log('User updated กหหหหหหหหหหหหหหหห:', res.data);\r\n                     setData(data.map(user => (user._id === res.data._id ? res.data : user)));\r\n                 })\r\n                 .catch(err => console.error('Failed to update user:', err));\r\n         } else {\r\n"
+                },
+                {
+                    "date": 1739554449793,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -141,9 +141,9 @@\n                 <div className=\"search-container\">\r\n                     <input\r\n                         type=\"text\"\r\n                         className=\"search-input\"\r\n-                        placeholder=\"ค้นหาด้วยชื่อ จ้า รอบ 2 0.30 กหกหกหก\"\r\n+                        placeholder=\"ค้นหาด้วยชื่อ เช่น น้องแก้ม เฟื่อง\"\r\n                         value={searchQuery}\r\n                         onChange={(e) => setSearchQuery(e.target.value)}\r\n                     />\r\n                     <button className=\"blue-button\" onClick={handleAddNewUser}>เพิ่มผู้ใช้ใหม่</button>\r\n"
+                },
+                {
+                    "date": 1739554676693,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,8 +4,9 @@\n import EditUser from './assets/EditUser';\r\n import UserTable from './assets/UserTable';\r\n import axios from 'axios';\r\n import Swal from 'sweetalert2';\r\n+import Grid from '@mui/material/Grid';\r\n \r\n const UserManager = () => {\r\n     const [data, setData] = useState([]);\r\n     const [searchQuery, setSearchQuery] = useState('');\r\n"
+                },
+                {
+                    "date": 1739558629039,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -138,8 +138,11 @@\n \r\n     return (\r\n         <div className='container'>\r\n             <div className=\"middle-box\">\r\n+                <Grid>\r\n+                    \r\n+                </Grid>\r\n                 <div className=\"search-container\">\r\n                     <input\r\n                         type=\"text\"\r\n                         className=\"search-input\"\r\n"
                 }
             ],
             "date": 1739554088105,
