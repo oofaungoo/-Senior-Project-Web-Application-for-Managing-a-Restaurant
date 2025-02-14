@@ -1,0 +1,138 @@
+.note-section textarea {
+  font-family: inherit;
+  font-size: 16px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: var(--grey-text);
+  /* สีหมายเหตุเป็น var(--grey-text) */
+}
+
+.quantity-div {
+  display: flex;
+  align-items: center;
+}
+
+.quantity-left-btn {
+  margin-right: 14px;
+  width: 40px;
+  height: 40px;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #3f3f3f;
+  background-color: #d8d8d8;
+  border: none;
+  border-radius: 50%;
+  transition: background-color 1s;
+}
+
+.quantity-left-btn:disabled {
+  background-color: #f0f0f0;
+  /* สีจางลง */
+  cursor: not-allowed;
+  color: #aaa;
+  /* สีเทา */
+}
+
+.quantity-left-btn:hover {
+  background-color: var(--light-blue-color-border);
+}
+
+.quantity-right-btn {
+  margin-left: 14px;
+  width: 40px;
+  height: 40px;
+  font-size: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #3f3f3f;
+  background-color: #d8d8d8;
+  border: none;
+  border-radius: 50%;
+  transition: background-color 1s;
+}
+
+.quantity-right-btn:hover {
+  background-color: var(--light-blue-color-border);
+}
+
+.note-input {
+  width: 100%;
+  font-size: 16px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.order-edit-del {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ของ CartSummary */
+
+.cart-item-column {
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  /* ทำให้ label กับ input เป็นคนละบรรทัด */
+}
+
+.quantity-box {
+  display: inline-block;
+  padding: 2px 8px;
+  background-color: #f2f2f2;
+  border: 1px solid var(--dark-grey-color);
+  border-radius: 4px;
+  color: var(--black-color);
+  font-size: 14px;
+  margin-right: 12px;
+}
+
+/* ลักษณะของรายการสินค้า */
+.cart-item-details {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* การจัดกลุ่มข้อมูลเกี่ยวกับเมนู */
+.item-info {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+/* ชื่อเมนู */
+.item-name {
+  font-weight: 500;
+}
+
+/* ขนาดและรายละเอียดเพิ่มเติม */
+.item-size-note {
+  color: var(--grey-text);
+}
+
+/* ราคาของเมนู */
+.cart-item-price {
+
+  text-align: right;
+  /* ราคาอยู่ด้านขวา */
+}
+
+.total-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0 10px 0;
+}

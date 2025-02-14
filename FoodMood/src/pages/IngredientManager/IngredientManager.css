@@ -1,0 +1,101 @@
+.filter-button-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.category-filter {
+    max-width: 60%;
+}
+
+.ingredient-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.ingredient-table th, .ingredient-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.ingredient-table th {
+    background-color: #f0f0f0;
+}
+
+.ingredient-table td {
+    background-color: #fafafa;
+}
+
+.ingredient-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.edit-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.pagination {
+    display: flex;
+    margin-top: 1rem;
+    justify-content: flex-end;
+}
+
+.page-btn:hover {
+    opacity: 0.9;
+}
+
+/* ตัวนี้ต้องลบด้วยนะ เราใช้ซ้ำ ค่อยใส่ใน index.css */
+.quantity-div {
+    display: flex;
+    align-items: center;
+}
+
+.quantity-left-btn {
+    margin-right: 14px;
+    width: 40px;
+    height: 40px;
+    font-size: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #3f3f3f;
+    background-color: #d8d8d8;
+    border: none;
+    border-radius: 50%;
+    transition: background-color 1s;
+}
+
+.quantity-left-btn:disabled {
+    background-color: #f0f0f0; /* สีจางลง */
+    cursor: not-allowed;
+    color: #aaa; /* สีเทา */
+}
+
+.quantity-left-btn:hover {
+    background-color: var(--light-blue-color-border);
+}
+
+.quantity-right-btn {
+    margin-left: 14px;
+    width: 40px;
+    height: 40px;
+    font-size: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #3f3f3f;
+    background-color: #d8d8d8;
+    border: none;
+    border-radius: 50%;
+    transition: background-color 1s;
+}
+
+.quantity-right-btn:hover {
+    background-color: var(--light-blue-color-border);
+}

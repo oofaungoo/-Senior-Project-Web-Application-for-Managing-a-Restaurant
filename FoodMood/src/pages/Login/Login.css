@@ -1,0 +1,73 @@
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 20px;
+    background-color: var(--background-color);
+}
+
+h2 {
+    margin-bottom: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--font-color);
+}
+
+.toggle-mode {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.toggle-mode button {
+    padding: 8px 16px;
+    background-color: transparent;
+    border: 1px solid var(--input-border-color);
+    border-radius: 5px;
+    font-size: 14px;
+    color: var(--font-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.toggle-mode button.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.toggle-mode button:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    width: 280px;
+    gap: 12px;
+}
+
+button {
+    padding: 10px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: inherit;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: darken(var(--primary-color), 10%);
+}
+
+.error-message {
+    color: var(--error-color);
+    font-size: 13px;
+    font-family: inherit;
+}
