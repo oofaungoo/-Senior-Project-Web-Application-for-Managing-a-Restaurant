@@ -35,7 +35,7 @@ const UserManager = () => {
 
         axios.get('http://localhost:5000/api/roles')
             .then(res => {
-                console.log('role จ้า: ', res.data);
+                //console.log('role จ้า: ', res.data);
                 setRoleOptions(res.data); 
                 
             })
@@ -142,7 +142,7 @@ const UserManager = () => {
                     <input
                         type="text"
                         className="search-input"
-                        placeholder="ค้นหาด้วยชื่อ จ้า"
+                        placeholder="ค้นหาด้วยชื่อ"
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                     />

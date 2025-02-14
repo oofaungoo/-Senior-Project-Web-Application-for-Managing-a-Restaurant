@@ -142,7 +142,7 @@ const UserManager = () => {
                     <input
                         type="text"
                         className="search-input"
-                        placeholder="ค้นหาด้วยชื่อ จ้า"
+                        placeholder="ค้นหาด้วยชื่อ"
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                     />
