@@ -64,7 +64,7 @@ const UserManager = () => {
             console.log('แก้ไข user  :', userToEdit._id);
             axios.put(`http://localhost:5000/api/users/${userToEdit._id}`, updatedUser)
                 .then(res => {
-                    console.log('User updated กหหหหหหหหหหหหหหหห:', res.data);
+                    console.log('User updated:', res.data);
                     setData(data.map(user => (user._id === res.data._id ? res.data : user)));
                 })
                 .catch(err => console.error('Failed to update user:', err));
