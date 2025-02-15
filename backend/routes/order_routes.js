@@ -41,11 +41,16 @@ router.post('/', async (req, res) => {
         const order = new dataDB({
             orderNumber: newOrderNumber,
             orderDate: todayDate,
-            orderTime: new Date().toLocaleTimeString(),
+            orderTime: new Intl.DateTimeFormat('en-GB', {
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false,  // Ensures 24-hour format
+            }).format(new Date()),
             orderItems: req.body.items,
             orderType: req.body.orderType,
             contactInfo: req.body.contactInfo,
-            orderStatus: 'ยังไม่เริ่มทำ',
+            orderStatus: 'ยังไม่เริ่ม',
             totalPrice: req.body.total
         });
 
