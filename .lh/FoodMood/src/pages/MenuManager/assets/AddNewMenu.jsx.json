@@ -3,11 +3,23 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 3,
             "patches": [
                 {
                     "date": 1739559269548,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1739607882026,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,8 +5,13 @@\n import axios from 'axios';\r\n import { HiOutlinePencil, HiOutlineTrash } from \"react-icons/hi\";\r\n import Swal from 'sweetalert2';\r\n \r\n+{/* \r\n+    1. กดแก้ไขแล้วมันไม่ดึงข้อมูลไปแก้\r\n+*/}\r\n+\r\n+\r\n const AddNewMenu = ({ form, dataToEdit, onCancel }) => {\r\n     const [menuName, setMenuName] = useState('');\r\n     const [category_id, setCategory_id] = useState('1');\r\n     const [category, setCategory] = useState('1');\r\n"
+                },
+                {
+                    "date": 1739612904346,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -65,8 +65,9 @@\n             setMenuName(dataToEdit.name)\r\n             setCategory_id(dataToEdit.category_id)\r\n             setCategory(dataToEdit.category)\r\n             setSizePrices(dataToEdit.sizePrices)\r\n+            setCustomOptions(dataToEdit.customOptions)\r\n         }\r\n \r\n     }, []);\r\n \r\n"
+                },
+                {
+                    "date": 1739613044381,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,9 @@\n     1. กดแก้ไขแล้วมันไม่ดึงข้อมูลไปแก้\r\n */}\r\n \r\n \r\n-const AddNewMenu = ({ form, dataToEdit, onCancel }) => {\r\n+const AddNewMenu = ({ form, dataToEdit, onCancel,setShowItemDetail }) => {\r\n     const [menuName, setMenuName] = useState('');\r\n     const [category_id, setCategory_id] = useState('1');\r\n     const [category, setCategory] = useState('1');\r\n     const [sizePrices, setSizePrices] = useState([]);\r\n@@ -180,8 +180,9 @@\n                 sizePrices,\r\n                 customOptions,\r\n             };\r\n             axios.put(`http://localhost:5000/api/foods/${dataToEdit._id}`, editedMenu)\r\n+            setShowItemDetail(false);\r\n         } else {\r\n             const newMenu = {\r\n                 name: menuName,\r\n                 category_id,\r\n@@ -190,8 +191,9 @@\n                 sizePrices,\r\n                 customOptions,\r\n             };\r\n             axios.post('http://localhost:5000/api/foods', newMenu)\r\n+            setShowItemDetail(false);\r\n         }\r\n     };\r\n \r\n     return (\r\n"
                 }
             ],
             "date": 1739559269548,

@@ -1,0 +1,22 @@
+{
+    "sourceFile": "backend/routes/ingredients_route.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1739621242312,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1739621497233,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -33,21 +33,9 @@\n     } catch (error) {\n         res.status(401).json({ message: error.message });\n     }\n });\n-router.put('/', async (req, res) => {\n-    const { data } = req.body;\n \n-    try {\n-        const data = new dataDB(data);\n-\n-        const newData = await data.save();\n-        res.status(201).json(newData);\n-    } catch (error) {\n-        res.status(401).json({ message: error.message });\n-    }\n-});\n-\n router.put('/:id', async (req, res) => {\n     try {\n         const id = req.params.id;\n \n"
+                }
+            ],
+            "date": 1739621242312,
+            "name": "Commit-0",
+            "content": "const express = require('express');\nconst router = express.Router();\n\nconst dataDB = require('../models/ingredients');\n\nrouter.get('/', async (req, res) => {\n    try {\n        const result = await dataDB.find();\n        res.json(result);\n    } catch (error) {\n        res.status(500).json({ message: error.message });\n    }\n});\n\nrouter.get('/:id', async (req, res) => {\n    res.json(res.result);\n});\n\nrouter.post('/', async (req, res) => {\n    const { name, group, remain, min, unit } = req.body;\n\n    try {\n        const data = new dataDB({\n            name: name,\n            group: group,\n            unit: unit,\n            remain: Number(remain || 0),\n            min: Number(min || 0)\n        });\n\n        const newData = await data.save();\n        res.status(201).json(newData);\n    } catch (error) {\n        res.status(401).json({ message: error.message });\n    }\n});\nrouter.put('/', async (req, res) => {\n    const { data } = req.body;\n\n    try {\n        const data = new dataDB(data);\n\n        const newData = await data.save();\n        res.status(201).json(newData);\n    } catch (error) {\n        res.status(401).json({ message: error.message });\n    }\n});\n\nrouter.put('/:id', async (req, res) => {\n    try {\n        const id = req.params.id;\n\n        const data = await dataDB.findById(id);\n\n        if (!data) return res.status(404).json({ message: 'ไม่พบวัตถุดิบในระบบ' });\n\n        if (req.body.name != null) {\n            data.name = req.body.name;\n        }\n        if (req.body.group != null) {\n            data.group = req.body.group;\n        }\n        if (req.body.unit != null) {\n            data.unit = req.body.unit;\n        }\n        if (req.body.remain != null) {\n            data.remain = req.body.remain;\n        }\n        if (req.body.min != null) {\n            data.min = req.body.min;\n        }\n\n        const updatedData = await data.save();\n\n        res.json(updatedData);\n    } catch (error) {\n        res.status(400).json({ message: error.message });\n    }\n});\n\nrouter.delete('/:id', async (req, res) => {\n    try {\n        await dataDB.findByIdAndDelete(req.params.id)\n        res.json({ message: 'ลบวัตถุดิบออกจาก Database เรียบร้อยแล้ว' });\n    } catch (error) {\n        res.status(500).json({ message: error.message });\n    }\n});\n\nmodule.exports = router;"
+        }
+    ]
+}
