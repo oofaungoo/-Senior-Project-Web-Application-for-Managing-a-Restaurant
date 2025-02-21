@@ -3,11 +3,15 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 1,
             "patches": [
                 {
                     "date": 1739620835698,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1739625292953,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -44,8 +44,10 @@\n             contactInfo: isDineIn ? { tableNumber } : { phoneNumber },\r\n             orderDate: new Date().toLocaleDateString('en-GB'),\r\n             orderTime: new Date().toLocaleTimeString(),\r\n         };\r\n+\r\n+        \r\n         onSave(newOrder);\r\n     };\r\n \r\n     return (\r\n"
                 }
             ],
             "date": 1739620835698,

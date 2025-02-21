@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 3,
+            "activePatchIndex": 5,
             "patches": [
                 {
                     "date": 1739558008022,
@@ -20,6 +20,14 @@
                 {
                     "date": 1739558394265,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -33,8 +33,9 @@\n   color: var(--black-color);\r\n }\r\n p {\r\n   display: flex;\r\n+  align-items: flex-start;\r\n   font-family: 'IBM Plex Sans Thai';\r\n }\r\n .container {\r\n   display: flex;\r\n"
+                },
+                {
+                    "date": 1740148740795,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -40,16 +40,10 @@\n .container {\r\n   display: flex;\r\n }\r\n \r\n-.main-content {\r\n-  flex-grow: 1;\r\n-  /* Make this section take up the remaining space */\r\n-  overflow-y: auto;\r\n-  background-color: #f4f4f4;\r\n-  /* Light background to contrast with sidebar */\r\n-}\r\n \r\n+\r\n .middle-box {\r\n   width: 75%;\r\n   height: 100vh;\r\n   background-color: var(--white-color);\r\n"
+                },
+                {
+                    "date": 1740148992722,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -40,10 +40,14 @@\n .container {\r\n   display: flex;\r\n }\r\n \r\n+.main-content {\r\n+  flex-grow: 1;\r\n+  overflow-y: auto;\r\n+  background-color: #f4f4f4;\r\n+}\r\n \r\n-\r\n .middle-box {\r\n   width: 75%;\r\n   height: 100vh;\r\n   background-color: var(--white-color);\r\n"
                 }
             ],
             "date": 1739558008022,

@@ -1,0 +1,70 @@
+{
+    "sourceFile": "FoodMood/src/AppLayout.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 13,
+            "patches": [
+                {
+                    "date": 1740119003092,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1740141577881,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,7 @@\n import React from 'react';\r\n import { Outlet } from 'react-router-dom';\r\n import Sidebar from './components/Sidebar/Sidebar';\r\n-import { Container } from '@mui/material';\r\n \r\n const AppLayout = () => {\r\n     return (\r\n         <div className=\"container\">\r\n"
+                },
+                {
+                    "date": 1740148537774,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,8 @@\n import React from 'react';\r\n import { Outlet } from 'react-router-dom';\r\n import Sidebar from './components/Sidebar/Sidebar';\r\n+import { Container } from '@mui/material';\r\n \r\n const AppLayout = () => {\r\n     return (\r\n         <div className=\"container\">\r\n"
+                },
+                {
+                    "date": 1740148838808,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,14 +1,21 @@\n import React from 'react';\r\n import { Outlet } from 'react-router-dom';\r\n import Sidebar from './components/Sidebar/Sidebar';\r\n-import { Container } from '@mui/material';\r\n+import Container from '@mui/material/Container';\r\n \r\n const AppLayout = () => {\r\n     return (\r\n-        <div className=\"container\">\r\n+        <div className=\"container\" style={{ display: 'flex', height: '100vh' }}>\r\n             <Sidebar />\r\n-            <Container>\r\n+            <Container\r\n+                sx={{\r\n+                    flexGrow: 1,\r\n+                    overflowY: 'auto',\r\n+                    backgroundColor: '#f4f4f4',\r\n+                    padding: 2,\r\n+                }}\r\n+            >\r\n                 <Outlet />\r\n             </Container>\r\n         </div>\r\n     );\r\n"
+                },
+                {
+                    "date": 1740148864735,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,23 +1,15 @@\n import React from 'react';\r\n import { Outlet } from 'react-router-dom';\r\n import Sidebar from './components/Sidebar/Sidebar';\r\n-import Container from '@mui/material/Container';\r\n \r\n const AppLayout = () => {\r\n     return (\r\n-        <div className=\"container\" style={{ display: 'flex', height: '100vh' }}>\r\n+        <div className=\"container\">\r\n             <Sidebar />\r\n-            <Container\r\n-                sx={{\r\n-                    flexGrow: 1,\r\n-                    overflowY: 'auto',\r\n-                    backgroundColor: '#f4f4f4',\r\n-                    padding: 2,\r\n-                }}\r\n-            >\r\n+            <div>\r\n                 <Outlet />\r\n-            </Container>\r\n+            </div>\r\n         </div>\r\n     );\r\n };\r\n \r\n"
+                },
+                {
+                    "date": 1740148871038,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,14 +3,14 @@\n import Sidebar from './components/Sidebar/Sidebar';\r\n \r\n const AppLayout = () => {\r\n     return (\r\n-        <div className=\"container\">\r\n+        <Container>\r\n             <Sidebar />\r\n             <div>\r\n                 <Outlet />\r\n             </div>\r\n-        </div>\r\n+        </Container>\r\n     );\r\n };\r\n \r\n export default AppLayout;\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1740148878808,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,8 @@\n import React from 'react';\r\n import { Outlet } from 'react-router-dom';\r\n import Sidebar from './components/Sidebar/Sidebar';\r\n+import { Container } from '@mui/material';\r\n \r\n const AppLayout = () => {\r\n     return (\r\n         <Container>\r\n"
+                },
+                {
+                    "date": 1740148892545,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n import { Container } from '@mui/material';\r\n \r\n const AppLayout = () => {\r\n     return (\r\n-        <Container>\r\n+        <Container sx={{ display: 'flex', flexDirection: 'row', padding: 0 }}>\r\n             <Sidebar />\r\n             <div>\r\n                 <Outlet />\r\n             </div>\r\n"
+                },
+                {
+                    "date": 1740148925274,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n import { Container } from '@mui/material';\r\n \r\n const AppLayout = () => {\r\n     return (\r\n-        <Container sx={{ display: 'flex', flexDirection: 'row', padding: 0 }}>\r\n+        <Container sx={{ flexGrow: 1, display: 'flex', flexDirection: 'row', padding: 0 }}>\r\n             <Sidebar />\r\n             <div>\r\n                 <Outlet />\r\n             </div>\r\n"
+                },
+                {
+                    "date": 1740148933765,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,17 +1,16 @@\n import React from 'react';\r\n import { Outlet } from 'react-router-dom';\r\n import Sidebar from './components/Sidebar/Sidebar';\r\n-import { Container } from '@mui/material';\r\n \r\n const AppLayout = () => {\r\n     return (\r\n-        <Container sx={{ flexGrow: 1, display: 'flex', flexDirection: 'row', padding: 0 }}>\r\n+        <div className=\"container\">\r\n             <Sidebar />\r\n-            <div>\r\n+            <Container>\r\n                 <Outlet />\r\n-            </div>\r\n-        </Container>\r\n+            </Container>\r\n+        </div>\r\n     );\r\n };\r\n \r\n export default AppLayout;\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1740148952600,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,11 +5,11 @@\n const AppLayout = () => {\r\n     return (\r\n         <div className=\"container\">\r\n             <Sidebar />\r\n-            <Container>\r\n+            <dic className=\"main-content\">\r\n                 <Outlet />\r\n-            </Container>\r\n+            </ก>\r\n         </div>\r\n     );\r\n };\r\n \r\n"
+                },
+                {
+                    "date": 1740148958382,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,11 +5,11 @@\n const AppLayout = () => {\r\n     return (\r\n         <div className=\"container\">\r\n             <Sidebar />\r\n-            <dic className=\"main-content\">\r\n+            <div className=\"main-content\">\r\n                 <Outlet />\r\n-            </ก>\r\n+            </div>\r\n         </div>\r\n     );\r\n };\r\n \r\n"
+                },
+                {
+                    "date": 1740148964160,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,16 @@\n+import React from 'react';\r\n+import { Outlet } from 'react-router-dom';\r\n+import Sidebar from './components/Sidebar/Sidebar';\r\n+\r\n+const AppLayout = () => {\r\n+    return (\r\n+        <div className=\"container\">\r\n+            <Sidebar />\r\n+            <div className=\"main-content\">\r\n+                <Outlet />\r\n+            </div>\r\n+        </div>\r\n+    );\r\n+};\r\n+\r\n+export default AppLayout;\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1740148987178,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,21 +12,5 @@\n         </div>\r\n     );\r\n };\r\n \r\n-export default AppLayout;\n-import React from 'react';\r\n-import { Outlet } from 'react-router-dom';\r\n-import Sidebar from './components/Sidebar/Sidebar';\r\n-\r\n-const AppLayout = () => {\r\n-    return (\r\n-        <div className=\"container\">\r\n-            <Sidebar />\r\n-            <div className=\"main-content\">\r\n-                <Outlet />\r\n-            </div>\r\n-        </div>\r\n-    );\r\n-};\r\n-\r\n export default AppLayout;\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1740119003092,
+            "name": "Commit-0",
+            "content": "import React from 'react';\r\nimport { Outlet } from 'react-router-dom';\r\nimport Sidebar from './components/Sidebar/Sidebar';\r\nimport { Container } from '@mui/material';\r\n\r\nconst AppLayout = () => {\r\n    return (\r\n        <div className=\"container\">\r\n            <Sidebar />\r\n            <Container>\r\n                <Outlet />\r\n            </Container>\r\n        </div>\r\n    );\r\n};\r\n\r\nexport default AppLayout;"
+        }
+    ]
+}
