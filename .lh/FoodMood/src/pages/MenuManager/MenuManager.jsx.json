@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 44,
+            "activePatchIndex": 50,
             "patches": [
                 {
                     "date": 1739558701777,
@@ -184,6 +184,30 @@
                 {
                     "date": 1740148675578,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -144,9 +144,9 @@\n         setShowEditData(false)\r\n     }\r\n         \r\n     return (\r\n-        <Container sx={{width: \"500px\"}}> \r\n+        <> \r\n             <MenuList\r\n                 data={data}\r\n                 category={category}\r\n                 onMenuClick={handleMenuClick}\r\n@@ -165,9 +165,9 @@\n                 />\r\n               \r\n             }\r\n             {showItemDetail && <MenuItemDetail selectedItem={selectedItem} onEdit={handleEditData} handleClickConfirm={handleClickConfirm} onClose={() => setShowItemDetail(false)} />}\r\n-        </Container>\r\n+        </>\r\n     );\r\n };\r\n \r\n export default MenuManager;\r\n"
+                },
+                {
+                    "date": 1740204563716,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -144,16 +144,18 @@\n         setShowEditData(false)\r\n     }\r\n         \r\n     return (\r\n-        <> \r\n+        <div>\r\n+            <>\r\n             <MenuList\r\n                 data={data}\r\n                 category={category}\r\n                 onMenuClick={handleMenuClick}\r\n                 onAddNewMenu={handleAddNewData}\r\n                 selectedItem={selectedItem}\r\n             />\r\n+            </>\r\n             {showEditData &&\r\n                 <AddNewMenu\r\n                     form={isEditing ? \"Edit\" : \"Add\"}\r\n                     dataToEdit={dataToEdit}\r\n@@ -165,9 +167,9 @@\n                 />\r\n               \r\n             }\r\n             {showItemDetail && <MenuItemDetail selectedItem={selectedItem} onEdit={handleEditData} handleClickConfirm={handleClickConfirm} onClose={() => setShowItemDetail(false)} />}\r\n-        </>\r\n+        </div>\r\n     );\r\n };\r\n \r\n export default MenuManager;\r\n"
+                },
+                {
+                    "date": 1740204574944,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -145,17 +145,17 @@\n     }\r\n         \r\n     return (\r\n         <div>\r\n-            <>\r\n+            <div className='middle-box'>\r\n             <MenuList\r\n                 data={data}\r\n                 category={category}\r\n                 onMenuClick={handleMenuClick}\r\n                 onAddNewMenu={handleAddNewData}\r\n                 selectedItem={selectedItem}\r\n             />\r\n-            </>\r\n+            </div>\r\n             {showEditData &&\r\n                 <AddNewMenu\r\n                     form={isEditing ? \"Edit\" : \"Add\"}\r\n                     dataToEdit={dataToEdit}\r\n"
+                },
+                {
+                    "date": 1740204591138,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -166,8 +166,11 @@\n                     setShowItemDetail={handleSave}\r\n                 />\r\n               \r\n             }\r\n+            <div className='right-box'>\r\n+\r\n+            </div>\r\n             {showItemDetail && <MenuItemDetail selectedItem={selectedItem} onEdit={handleEditData} handleClickConfirm={handleClickConfirm} onClose={() => setShowItemDetail(false)} />}\r\n         </div>\r\n     );\r\n };\r\n"
+                },
+                {
+                    "date": 1740204599009,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -167,11 +167,10 @@\n                 />\r\n               \r\n             }\r\n             <div className='right-box'>\r\n-\r\n+                {showItemDetail && <MenuItemDetail selectedItem={selectedItem} onEdit={handleEditData} handleClickConfirm={handleClickConfirm} onClose={() => setShowItemDetail(false)} />}\r\n             </div>\r\n-            {showItemDetail && <MenuItemDetail selectedItem={selectedItem} onEdit={handleEditData} handleClickConfirm={handleClickConfirm} onClose={() => setShowItemDetail(false)} />}\r\n         </div>\r\n     );\r\n };\r\n \r\n"
+                },
+                {
+                    "date": 1740204609123,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -154,8 +154,9 @@\n                 onAddNewMenu={handleAddNewData}\r\n                 selectedItem={selectedItem}\r\n             />\r\n             </div>\r\n+            <div className='right-box'>\r\n             {showEditData &&\r\n                 <AddNewMenu\r\n                     form={isEditing ? \"Edit\" : \"Add\"}\r\n                     dataToEdit={dataToEdit}\r\n@@ -166,9 +167,9 @@\n                     setShowItemDetail={handleSave}\r\n                 />\r\n               \r\n             }\r\n-            <div className='right-box'>\r\n+            \r\n                 {showItemDetail && <MenuItemDetail selectedItem={selectedItem} onEdit={handleEditData} handleClickConfirm={handleClickConfirm} onClose={() => setShowItemDetail(false)} />}\r\n             </div>\r\n         </div>\r\n     );\r\n"
+                },
+                {
+                    "date": 1740204618249,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -154,9 +154,8 @@\n                 onAddNewMenu={handleAddNewData}\r\n                 selectedItem={selectedItem}\r\n             />\r\n             </div>\r\n-            <div className='right-box'>\r\n             {showEditData &&\r\n                 <AddNewMenu\r\n                     form={isEditing ? \"Edit\" : \"Add\"}\r\n                     dataToEdit={dataToEdit}\r\n@@ -167,11 +166,9 @@\n                     setShowItemDetail={handleSave}\r\n                 />\r\n               \r\n             }\r\n-            \r\n-                {showItemDetail && <MenuItemDetail selectedItem={selectedItem} onEdit={handleEditData} handleClickConfirm={handleClickConfirm} onClose={() => setShowItemDetail(false)} />}\r\n-            </div>\r\n+            {showItemDetail && <MenuItemDetail selectedItem={selectedItem} onEdit={handleEditData} handleClickConfirm={handleClickConfirm} onClose={() => setShowItemDetail(false)} />}\r\n         </div>\r\n     );\r\n };\r\n \r\n"
                 }
             ],
             "date": 1739558701777,

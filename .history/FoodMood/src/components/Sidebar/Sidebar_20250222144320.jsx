@@ -1,0 +1,113 @@
+import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { Box, Drawer, IconButton, useMediaQuery } from '@mui/material';
+import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
+import NoteAddRoundedIcon from '@mui/icons-material/NoteAddRounded';
+import FileCopyRoundedIcon from '@mui/icons-material/FileCopyRounded';
+import FindInPageRoundedIcon from '@mui/icons-material/FindInPageRounded';
+import InboxRoundedIcon from '@mui/icons-material/InboxRounded';
+import FastfoodRoundedIcon from '@mui/icons-material/FastfoodRounded';
+import PeopleAltRoundedIcon from '@mui/icons-material/PeopleAltRounded';
+import NotificationsActiveRoundedIcon from '@mui/icons-material/NotificationsActiveRounded';
+
+const Sidebar = ({ unreadNotifications }) => {
+    const location = useLocation();
+    const isSmallScreen = useMediaQuery('(max-width: 768px)'); // เช็คขนาดหน้าจอ
+    const [isDrawerOpen, setIsDrawerOpen] = useState(!isSmallScreen); // เปิด sidebar ตลอดถ้าเป็นจอใหญ่
+    const [isCollapsed, setIsCollapsed] = useState(false); // ควบคุมการย่อ/ขยายของ sidebar
+    const [activeMenu, setActiveMenu] = useState('');
+
+    useEffect(() => {
+        if (isSmallScreen) {
+            setIsDrawerOpen(false);
+        } else {
+            setIsDrawerOpen(true);
+        }
+    }, [isSmallScreen]);
+
+    const adminMenu = [
+        { to: '/OrderCreate', label: 'สร้างออเดอร์', icon: <NoteAddRoundedIcon /> },
+        { to: '/OrderCheck', label: 'ออร์เดอร์ปัจจุบัน', icon: <FileCopyRoundedIcon /> },
+        { to: '/OrderHistory', label: 'ประวัติออเดอร์', icon: <FindInPageRoundedIcon /> },
+        { to: '/IngredientManagement', label: 'จัดการวัตถุดิบ', icon: <InboxRoundedIcon /> },
+        { to: '/MenuManager', label: 'จัดการเมนูอาหาร', icon: <FastfoodRoundedIcon /> },
+        { to: '/UserManager', label: 'จัดการผู้ใช้', icon: <PeopleAltRoundedIcon /> },
+        {
+            to: '/Noti',
+            label: 'การแจ้งเตือน',
+            icon: <NotificationsActiveRoundedIcon />,
+            badge: unreadNotifications > 0,
+        }
+    ];
+
+    return (
+        <>
+            {/* ปุ่มเมนูสำหรับมือถือ */}
+            {isSmallScreen && (
+                <IconButton size='large' edge='start' aria-label='menu' onClick={() => setIsDrawerOpen(true)}>
+                    <MenuRoundedIcon />
+                </IconButton>
+            )}
+
+            {/* Sidebar สำหรับหน้าจอใหญ่ */}
+            <Drawer
+                variant={isSmallScreen ? 'temporary' : 'permanent'}
+                anchor='left'
+                open={isDrawerOpen}
+                onClose={() => setIsDrawerOpen(false)}
+                sx={{
+                    width: isCollapsed ? 80 : 250,
+                    flexShrink: 0,
+                    '& .MuiDrawer-paper': {
+                        width: isCollapsed ? 80 : 250,
+                        transition: 'width 0.3s',
+                        overflowX: 'hidden',
+                    }
+                }}
+            >
+                <Box
+                    p={2}
+                    sx={{
+                        height: '100vh',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: isCollapsed ? 'center' : 'flex-start',
+                    }}
+                >
+                    {/* ปุ่ม Collapse/Expand */}
+                    {!isSmallScreen && (
+                        <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
+                            <MenuRoundedIcon />
+                        </IconButton>
+                    )}
+
+                    {/* เมนูรายการ */}
+                    <ul style={{ listStyle: 'none', padding: 0, marginTop: 10 }}>
+                        {adminMenu.map((item) => (
+                            <Link to={item.to} key={item.label} style={{ textDecoration: 'none', color: 'inherit' }}>
+                                <li
+                                    style={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        padding: '10px 20px',
+                                        borderRadius: '8px',
+                                        backgroundColor: activeMenu === item.label ? '#e0e0e0' : 'transparent',
+                                        cursor: 'pointer',
+                                        transition: '0.3s',
+                                    }}
+                                    onClick={() => setActiveMenu(item.label)}
+                                >
+                                    {item.icon}
+                                    {!isCollapsed && <span style={{ marginLeft: 10 }}>{item.label}</span>}
+                                    {item.badge && <span className="badge">{unreadNotifications}</span>}
+                                </li>
+                            </Link>
+                        ))}
+                    </ul>
+                </Box>
+            </Drawer>
+        </>
+    );
+};
+
+export default Sidebar;

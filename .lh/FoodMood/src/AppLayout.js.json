@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 13,
+            "activePatchIndex": 35,
             "patches": [
                 {
                     "date": 1740119003092,
@@ -60,6 +60,94 @@
                 {
                     "date": 1740148987178,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,21 +12,5 @@\n         </div>\r\n     );\r\n };\r\n \r\n-export default AppLayout;\n-import React from 'react';\r\n-import { Outlet } from 'react-router-dom';\r\n-import Sidebar from './components/Sidebar/Sidebar';\r\n-\r\n-const AppLayout = () => {\r\n-    return (\r\n-        <div className=\"container\">\r\n-            <Sidebar />\r\n-            <div className=\"main-content\">\r\n-                <Outlet />\r\n-            </div>\r\n-        </div>\r\n-    );\r\n-};\r\n-\r\n export default AppLayout;\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1740149069685,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,14 +3,14 @@\n import Sidebar from './components/Sidebar/Sidebar';\r\n \r\n const AppLayout = () => {\r\n     return (\r\n-        <div className=\"container\">\r\n+        <Container sx={{ display: 'flex' }}>\r\n             <Sidebar />\r\n             <div className=\"main-content\">\r\n                 <Outlet />\r\n             </div>\r\n-        </div>\r\n+        </Container>\r\n     );\r\n };\r\n \r\n export default AppLayout;\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1740149075695,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,8 @@\n import React from 'react';\r\n import { Outlet } from 'react-router-dom';\r\n import Sidebar from './components/Sidebar/Sidebar';\r\n+import { Container } from '@mui/material';\r\n \r\n const AppLayout = () => {\r\n     return (\r\n         <Container sx={{ display: 'flex' }}>\r\n"
+                },
+                {
+                    "date": 1740149084692,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n import { Container } from '@mui/material';\r\n \r\n const AppLayout = () => {\r\n     return (\r\n-        <Container sx={{ display: 'flex' }}>\r\n+        <Container sx={{ display: 'flex', width: '100%', height: '100vh', padding: 0 }}>\r\n             <Sidebar />\r\n             <div className=\"main-content\">\r\n                 <Outlet />\r\n             </div>\r\n"
+                },
+                {
+                    "date": 1740149253751,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,13 @@\n import { Container } from '@mui/material';\r\n \r\n const AppLayout = () => {\r\n     return (\r\n-        <Container sx={{ display: 'flex', width: '100%', height: '100vh', padding: 0 }}>\r\n+        <Container \r\n+            maxWidth=\"none\" \r\n+            disableGutters \r\n+            sx={{ display: 'flex', width: '100vw', height: '100vh', padding: 0 }}\r\n+        >\r\n             <Sidebar />\r\n             <div className=\"main-content\">\r\n                 <Outlet />\r\n             </div>\r\n"
+                },
+                {
+                    "date": 1740149267530,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,11 +4,9 @@\n import { Container } from '@mui/material';\r\n \r\n const AppLayout = () => {\r\n     return (\r\n-        <Container \r\n-            maxWidth=\"none\" \r\n-            disableGutters \r\n+        <Container maxWidth=\"none\" \r\n             sx={{ display: 'flex', width: '100vw', height: '100vh', padding: 0 }}\r\n         >\r\n             <Sidebar />\r\n             <div className=\"main-content\">\r\n"
+                },
+                {
+                    "date": 1740149281191,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n import { Container } from '@mui/material';\r\n \r\n const AppLayout = () => {\r\n     return (\r\n-        <Container maxWidth=\"none\" \r\n+        <Container disableGutters \r\n             sx={{ display: 'flex', width: '100vw', height: '100vh', padding: 0 }}\r\n         >\r\n             <Sidebar />\r\n             <div className=\"main-content\">\r\n"
+                },
+                {
+                    "date": 1740149300084,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,11 +4,9 @@\n import { Container } from '@mui/material';\r\n \r\n const AppLayout = () => {\r\n     return (\r\n-        <Container disableGutters \r\n-            sx={{ display: 'flex', width: '100vw', height: '100vh', padding: 0 }}\r\n-        >\r\n+        <Container maxWidth=\"none\" disableGutters sx={{ display: 'flex', width: '100vw', height: '100vh', padding: 0 }}>\r\n             <Sidebar />\r\n             <div className=\"main-content\">\r\n                 <Outlet />\r\n             </div>\r\n"
+                },
+                {
+                    "date": 1740149406249,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n import { Container } from '@mui/material';\r\n \r\n const AppLayout = () => {\r\n     return (\r\n-        <Container maxWidth=\"none\" disableGutters sx={{ display: 'flex', width: '100vw', height: '100vh', padding: 0 }}>\r\n+        <Container maxWidth=\"none\" sx={{ display: 'flex', width: '100vw', height: '100vh', padding: 0 }}>\r\n             <Sidebar />\r\n             <div className=\"main-content\">\r\n                 <Outlet />\r\n             </div>\r\n"
+                },
+                {
+                    "date": 1740149470132,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,14 +4,19 @@\n import { Container } from '@mui/material';\r\n \r\n const AppLayout = () => {\r\n     return (\r\n-        <Container maxWidth=\"none\" sx={{ display: 'flex', width: '100vw', height: '100vh', padding: 0 }}>\r\n+        <Container maxWidth=\"none\" disableGutters sx={{ display: 'flex', width: '100vw', height: '100vh', padding: 0 }}>\r\n             <Sidebar />\r\n             <div className=\"main-content\">\r\n                 <Outlet />\r\n             </div>\r\n         </Container>\r\n     );\r\n };\r\n \r\n\\ No newline at end of file\n-export default AppLayout;\n+export default AppLayout;\r\n+\r\n+{/* อธิบายโค้ด\r\n+    1. maxWigth=\"none\" คือการลบ default maxWigth ของ MUI : ทำให้ Container ไม่มี maxWidth และจะเต็มหน้าจอ\r\n+    2. disableGutters : ไม่มี padding ที่ขอบของ Container\r\n+*/}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1740151011784,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n import { Container } from '@mui/material';\r\n \r\n const AppLayout = () => {\r\n     return (\r\n-        <Container maxWidth=\"none\" disableGutters sx={{ display: 'flex', width: '100vw', height: '100vh', padding: 0 }}>\r\n+        <Container maxWidth=\"none\" spacing={0} disableGutters sx={{ display: 'flex', width: '100vw', height: '100vh', padding: 0 }}>\r\n             <Sidebar />\r\n             <div className=\"main-content\">\r\n                 <Outlet />\r\n             </div>\r\n"
+                },
+                {
+                    "date": 1740151049651,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,14 +4,14 @@\n import { Container } from '@mui/material';\r\n \r\n const AppLayout = () => {\r\n     return (\r\n-        <Container maxWidth=\"none\" spacing={0} disableGutters sx={{ display: 'flex', width: '100vw', height: '100vh', padding: 0 }}>\r\n+        <Grid container>\r\n             <Sidebar />\r\n             <div className=\"main-content\">\r\n                 <Outlet />\r\n             </div>\r\n-        </Container>\r\n+        </Grid>\r\n     );\r\n };\r\n \r\n export default AppLayout;\r\n"
+                },
+                {
+                    "date": 1740151056984,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,9 @@\n import React from 'react';\r\n import { Outlet } from 'react-router-dom';\r\n import Sidebar from './components/Sidebar/Sidebar';\r\n import { Container } from '@mui/material';\r\n+import { Grid } from '@mui/material';\r\n \r\n const AppLayout = () => {\r\n     return (\r\n         <Grid container>\r\n"
+                },
+                {
+                    "date": 1740151062926,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n import { Grid } from '@mui/material';\r\n \r\n const AppLayout = () => {\r\n     return (\r\n-        <Grid container>\r\n+        <Grid >\r\n             <Sidebar />\r\n             <div className=\"main-content\">\r\n                 <Outlet />\r\n             </div>\r\n"
+                },
+                {
+                    "date": 1740151120841,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n import { Grid } from '@mui/material';\r\n \r\n const AppLayout = () => {\r\n     return (\r\n-        <Grid >\r\n+        <Grid container sx={{display: 'flex', flexDirection: 'row', height: '100vh'}}>\r\n             <Sidebar />\r\n             <div className=\"main-content\">\r\n                 <Outlet />\r\n             </div>\r\n"
+                },
+                {
+                    "date": 1740151161095,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,8 +6,11 @@\n \r\n const AppLayout = () => {\r\n     return (\r\n         <Grid container sx={{display: 'flex', flexDirection: 'row', height: '100vh'}}>\r\n+            <Grid item>\r\n+                <Sidebar />\r\n+            </Grid>\r\n             <Sidebar />\r\n             <div className=\"main-content\">\r\n                 <Outlet />\r\n             </div>\r\n"
+                },
+                {
+                    "date": 1740151184491,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,16 +5,15 @@\n import { Grid } from '@mui/material';\r\n \r\n const AppLayout = () => {\r\n     return (\r\n-        <Grid container sx={{display: 'flex', flexDirection: 'row', height: '100vh'}}>\r\n+        <Grid container sx={{ display: 'flex', flexDirection: 'row', height: '100vh' }}>\r\n             <Grid item>\r\n                 <Sidebar />\r\n             </Grid>\r\n-            <Sidebar />\r\n-            <div className=\"main-content\">\r\n+            <Grid item>\r\n                 <Outlet />\r\n-            </div>\r\n+            </Grid>\r\n         </Grid>\r\n     );\r\n };\r\n \r\n"
+                },
+                {
+                    "date": 1740151347034,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,20 +1,17 @@\n import React from 'react';\r\n import { Outlet } from 'react-router-dom';\r\n import Sidebar from './components/Sidebar/Sidebar';\r\n import { Container } from '@mui/material';\r\n-import { Grid } from '@mui/material';\r\n \r\n const AppLayout = () => {\r\n     return (\r\n-        <Grid container sx={{ display: 'flex', flexDirection: 'row', height: '100vh' }}>\r\n-            <Grid item>\r\n-                <Sidebar />\r\n-            </Grid>\r\n-            <Grid item>\r\n+        <Container maxWidth=\"none\" spacing={0} disableGutters sx={{ display: 'flex', width: '100vw', height: '100vh', padding: 0 }}>\r\n+            <Sidebar />\r\n+            <div className=\"main-content\">\r\n                 <Outlet />\r\n-            </Grid>\r\n-        </Grid>\r\n+            </div>\r\n+        </Container>\r\n     );\r\n };\r\n \r\n export default AppLayout;\r\n"
+                },
+                {
+                    "date": 1740211284054,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n \r\n const AppLayout = () => {\r\n     return (\r\n         <Container maxWidth=\"none\" spacing={0} disableGutters sx={{ display: 'flex', width: '100vw', height: '100vh', padding: 0 }}>\r\n-            <Sidebar />\r\n+            <Sidebar style={{paddingRight: '10px'}}/>\r\n             <div className=\"main-content\">\r\n                 <Outlet />\r\n             </div>\r\n         </Container>\r\n"
+                },
+                {
+                    "date": 1740211306811,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n \r\n const AppLayout = () => {\r\n     return (\r\n         <Container maxWidth=\"none\" spacing={0} disableGutters sx={{ display: 'flex', width: '100vw', height: '100vh', padding: 0 }}>\r\n-            <Sidebar style={{paddingRight: '10px'}}/>\r\n+            <Sidebar />\r\n             <div className=\"main-content\">\r\n                 <Outlet />\r\n             </div>\r\n         </Container>\r\n"
+                },
+                {
+                    "date": 1740211316118,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n \r\n const AppLayout = () => {\r\n     return (\r\n         <Container maxWidth=\"none\" spacing={0} disableGutters sx={{ display: 'flex', width: '100vw', height: '100vh', padding: 0 }}>\r\n-            <Sidebar />\r\n+            <Sidebar style={{paddingRight: '10px'}}/>\r\n             <div className=\"main-content\">\r\n                 <Outlet />\r\n             </div>\r\n         </Container>\r\n"
+                },
+                {
+                    "date": 1740211978372,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n \r\n const AppLayout = () => {\r\n     return (\r\n         <Container maxWidth=\"none\" spacing={0} disableGutters sx={{ display: 'flex', width: '100vw', height: '100vh', padding: 0 }}>\r\n-            <Sidebar style={{paddingRight: '10px'}}/>\r\n+            <Sidebar style={{marginRight:'10px'}}/>\r\n             <div className=\"main-content\">\r\n                 <Outlet />\r\n             </div>\r\n         </Container>\r\n"
+                },
+                {
+                    "date": 1740212000727,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n \r\n const AppLayout = () => {\r\n     return (\r\n         <Container maxWidth=\"none\" spacing={0} disableGutters sx={{ display: 'flex', width: '100vw', height: '100vh', padding: 0 }}>\r\n-            <Sidebar style={{marginRight:'10px'}}/>\r\n+            <Sidebar />\r\n             <div className=\"main-content\">\r\n                 <Outlet />\r\n             </div>\r\n         </Container>\r\n"
                 }
             ],
             "date": 1740119003092,

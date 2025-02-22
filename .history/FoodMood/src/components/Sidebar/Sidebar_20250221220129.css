@@ -1,0 +1,42 @@
+.sidebar ul li {
+    display: flex;
+    align-items: center;
+    padding: 8px 14px;
+    margin-top: 10px;
+    color: var(--white-color);
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    background-color: var(--blue-color); /* ปรับสีพื้นหลังเป็นสีฟ้า */
+    border-radius: 26px;
+}
+
+.sidebar ul li.active {
+    background-color: var(--dark-blue-color); /* สีฟ้าเข้มขึ้นสำหรับปุ่มที่ active */
+    color: var(--white-color);
+}
+
+.sidebar ul li:hover {
+    background-color: var(--dark-blue-color);
+    color: var(--white-color);
+}
+
+.sidebar-logout-button {
+    margin-top: auto;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: var(--blue-color); /* ปรับเป็นสีฟ้า */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    color: var(--white-color);
+}
+
+.sidebar-logout-button:hover {
+    background-color: var(--dark-blue-color); /* เปลี่ยนเป็นฟ้าเข้มเมื่อนำเมาส์ไปวาง */
+}
+
+.mobile-toggle-button {
+    background: var(--blue-color);
+    color: var(--white-color);
+}
