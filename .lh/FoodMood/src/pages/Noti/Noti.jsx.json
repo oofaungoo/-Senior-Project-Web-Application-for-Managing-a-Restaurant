@@ -1,0 +1,18 @@
+{
+    "sourceFile": "FoodMood/src/pages/Noti/Noti.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1740378876661,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1740378876661,
+            "name": "Commit-0",
+            "content": "import React, { useState, useEffect } from 'react';\r\nimport './Noti.css';\r\n\r\nconst Noti = () => {\r\n    const [notifications, setNotifications] = useState([]);\r\n\r\n    // Simulate fetching data from backend\r\n    useEffect(() => {\r\n        const fetchNotifications = async () => {\r\n            const mockData = [\r\n                {\r\n                    id: 1,\r\n                    item: \"หมูสับ\",\r\n                    quantity: \"50 g\",\r\n                    affectedMenus: \"ผัดกะเพราหมู, ผัดซีอิ๊วหมู, ข้าวหน้าหมู\",\r\n                    time: \"12:48 20/01/20025\",\r\n                    isNew: true,\r\n                },\r\n                {\r\n                    id: 2,\r\n                    item: \"ไก่\",\r\n                    quantity: \"30 g\",\r\n                    affectedMenus: \"ผัดกะเพราไก่, ผัดซีอิ๊วไก่, ข้าวหน้าไก่\",\r\n                    time: \"12:45 20/01/20025\",\r\n                    isNew: false,\r\n                },\r\n                {\r\n                    id: 3,\r\n                    item: \"ปลาหมึก\",\r\n                    quantity: \"หมด\",\r\n                    affectedMenus: \"ผัดกะเพราปลาหมึก, ข้าวผัดปลาหมึก\",\r\n                    time: \"12:40 20/01/20025\",\r\n                    isNew: false,\r\n                },\r\n            ];\r\n            setNotifications(mockData);\r\n        };\r\n\r\n        fetchNotifications();\r\n    }, []);\r\n\r\n    return (\r\n        <>\r\n            <div className=\"middle-box\">\r\n                {notifications.map((noti) => (\r\n                    <div\r\n                        key={noti.id}\r\n                        className={`notification ${noti.isNew ? 'new' : ''}`}\r\n                    >\r\n                        <div className=\"notification-header\">\r\n                            {noti.isNew && (\r\n                                <span className=\"notification-title-text fw-5\">New</span>\r\n                            )}\r\n                            <span className=\"notification-time\">{noti.time}</span>\r\n                        </div>\r\n                        <div className=\"notification-content\">\r\n                            วัตถุดิบ <span className=\"text-red\">{noti.item}</span> ในคลังคงเหลือน้อยกว่า\r\n                            <span className=\"text-red\"> {noti.quantity}</span> อาจส่งผลต่อเมนูต่อไปนี้\r\n                            <span className=\"text-red\"> {noti.affectedMenus}</span>\r\n                        </div>\r\n                    </div>\r\n                ))}\r\n            </div>\r\n        </>\r\n    );\r\n};\r\n\r\nexport default Noti;\r\n"
+        }
+    ]
+}

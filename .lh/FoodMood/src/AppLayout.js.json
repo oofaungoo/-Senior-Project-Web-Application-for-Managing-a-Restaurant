@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 35,
+            "activePatchIndex": 36,
             "patches": [
                 {
                     "date": 1740119003092,
@@ -148,6 +148,10 @@
                 {
                     "date": 1740212000727,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n \r\n const AppLayout = () => {\r\n     return (\r\n         <Container maxWidth=\"none\" spacing={0} disableGutters sx={{ display: 'flex', width: '100vw', height: '100vh', padding: 0 }}>\r\n-            <Sidebar style={{marginRight:'10px'}}/>\r\n+            <Sidebar />\r\n             <div className=\"main-content\">\r\n                 <Outlet />\r\n             </div>\r\n         </Container>\r\n"
+                },
+                {
+                    "date": 1740378807043,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,25 @@\n+import React from 'react';\r\n+import { Outlet } from 'react-router-dom';\r\n+import Sidebar from './components/Sidebar/Sidebar';\r\n+import { Container } from '@mui/material';\r\n+\r\n+const AppLayout = () => {\r\n+    return (\r\n+        <Container maxWidth=\"none\" spacing={0} disableGutters sx={{ display: 'flex', width: '100vw', height: '100vh', padding: 0 }}>\r\n+            <Sidebar />\r\n+            <div className=\"main-content\">\r\n+                <div className='container'>\r\n+                    <Outlet />\r\n+                </div>\r\n+                \r\n+            </div>\r\n+        </Container>\r\n+    );\r\n+};\r\n+\r\n+export default AppLayout;\r\n+\r\n+{/* อธิบายโค้ด\r\n+    1. maxWigth=\"none\" คือการลบ default maxWigth ของ MUI : ทำให้ Container ไม่มี maxWidth และจะเต็มหน้าจอ\r\n+    2. disableGutters : ไม่มี padding ที่ขอบของ Container\r\n+*/}\n\\ No newline at end of file\n"
                 }
             ],
             "date": 1740119003092,

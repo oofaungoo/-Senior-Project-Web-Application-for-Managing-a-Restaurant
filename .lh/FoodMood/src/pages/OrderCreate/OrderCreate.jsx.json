@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 31,
+            "activePatchIndex": 32,
             "patches": [
                 {
                     "date": 1739608563877,
@@ -132,6 +132,10 @@
                 {
                     "date": 1739623044845,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,12 +4,8 @@\n import MenuItemSelected from './assets/MenuItemSelected';\r\n import CartSummary from './assets/CartSummary';\r\n import './OrderCreate.css';\r\n \r\n-{/* BUGS\r\n-    1. เวลาจะ Edit Item ที่อยู่ใน Cart มันไม่ยอมดึงข้อมูลเก่ามาให้แก้ (มัน reset ใหม่หมดเลย)  \r\n-*/}\r\n-\r\n const OrderCreate = () => {\r\n     const [data, setData] = useState([]);\r\n     const [category, setCategory] = useState([]);\r\n     const [cartItems, setCartItems] = useState([]);         //Item(s) in cart\r\n"
+                },
+                {
+                    "date": 1740378821236,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -142,9 +142,9 @@\n     // Function: Calculate total price of item(s) in cart.\r\n     const totalPrice = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);\r\n \r\n     return (\r\n-        <div className='container'>\r\n+        <>\r\n             <MenuList_Order\r\n                 data={data}\r\n                 category={category}\r\n                 onMenuClick={handleMenuClick}\r\n@@ -175,9 +175,9 @@\n                         onSave={handleSaveData}\r\n                     />\r\n                 )}\r\n             </div>\r\n-        </div>\r\n+        </>\r\n     );\r\n };\r\n \r\n export default OrderCreate;\r\n"
                 }
             ],
             "date": 1739608563877,

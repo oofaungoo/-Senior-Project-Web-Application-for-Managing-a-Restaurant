@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 11,
+            "activePatchIndex": 14,
             "patches": [
                 {
                     "date": 1739607692826,
@@ -52,6 +52,18 @@
                 {
                     "date": 1739625959881,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,10 +21,8 @@\n                             <Paper sx={{ minHeight: 200, padding: 2, borderTop: `5px solid ${statusColors[data.orderStatus] || \"#000\"}`, }} onClick={() => selectOrder(data)}>\r\n                                 <p className=\"right-box-header fs-20 fw-5 text-center\">ออเดอร์ที่ {data.orderNumber}</p>\r\n                                 <p>สถานะ: {data.orderStatus}</p>\r\n                                 <p>เวลาที่สั่ง: {data.orderTime}</p>\r\n-\r\n-\r\n                             </Paper></Button>\r\n                     </Grid>\r\n                 ))\r\n             ) : (\r\n"
+                },
+                {
+                    "date": 1740392160096,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n     return (\r\n         <Grid container spacing={1}>\r\n             {orders?.length > 0 ? (\r\n                 orders.map((data) => (\r\n-                    <Grid item xs={6} md={4} lg={2} key={data.orderNumber}>\r\n+                    <Grid item xs={6} md={4} lg={3} key={data.orderNumber}>\r\n                         <Button style={{ height: \"100%\", padding: 0, margin: 0, display: \"flex\" }}>\r\n                             <Paper sx={{ minHeight: 200, padding: 2, borderTop: `5px solid ${statusColors[data.orderStatus] || \"#000\"}`, }} onClick={() => selectOrder(data)}>\r\n                                 <p className=\"right-box-header fs-20 fw-5 text-center\">ออเดอร์ที่ {data.orderNumber}</p>\r\n                                 <p>สถานะ: {data.orderStatus}</p>\r\n"
+                },
+                {
+                    "date": 1740392333846,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n     return (\r\n         <Grid container spacing={1}>\r\n             {orders?.length > 0 ? (\r\n                 orders.map((data) => (\r\n-                    <Grid item xs={6} md={4} lg={3} key={data.orderNumber}>\r\n+                    <Grid item xs={6} md={4} lg={2} key={data.orderNumber}>\r\n                         <Button style={{ height: \"100%\", padding: 0, margin: 0, display: \"flex\" }}>\r\n                             <Paper sx={{ minHeight: 200, padding: 2, borderTop: `5px solid ${statusColors[data.orderStatus] || \"#000\"}`, }} onClick={() => selectOrder(data)}>\r\n                                 <p className=\"right-box-header fs-20 fw-5 text-center\">ออเดอร์ที่ {data.orderNumber}</p>\r\n                                 <p>สถานะ: {data.orderStatus}</p>\r\n"
+                },
+                {
+                    "date": 1740392580964,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,12 +4,12 @@\n import { Paper } from \"@mui/material\";\r\n \r\n const OrderList = ({ orders, selectOrder }) => {\r\n     const statusColors = {\r\n-        \"ยังไม่เริ่ม\": \"#FF9800\", // Orange\r\n-        \"กำลังทำ\": \"#2196F3\", // Blue\r\n-        \"พร้อมเสิร์ฟ\": \"#4CAF50\", // Green\r\n-        \"เสร็จสิ้น\": \"#9E9E9E\", // Grey\r\n+        \"ยังไม่เริ่ม\": \"#9E9E9E\", // Orange\r\n+        \"กำลังทำ\": \"##FF9800\", // Blue\r\n+        \"พร้อมเสิร์ฟ\": \"#2196F3\", // Green\r\n+        \"เสร็จสิ้น\": \"#4CAF50\", // Grey\r\n         \"ยกเลิก\": \"#F44336\", // Red\r\n     };\r\n \r\n     return (\r\n"
                 }
             ],
             "date": 1739607692826,

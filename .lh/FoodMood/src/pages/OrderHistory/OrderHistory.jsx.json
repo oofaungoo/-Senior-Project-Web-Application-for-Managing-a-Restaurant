@@ -1,0 +1,18 @@
+{
+    "sourceFile": "FoodMood/src/pages/OrderHistory/OrderHistory.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1740378856447,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1740378856447,
+            "name": "Commit-0",
+            "content": "import React, { useState, useEffect } from 'react';\r\nimport OrderHistory_filter from './assets/OrderHistory_filter';\r\nimport OrderHistory_table from './assets/OrderHistory_table';\r\n\r\nconst OrderHistory = () => {\r\n\r\n    const [orderDate, setOrderDate] = useState('');\r\n    const [orderTimeStart, setOrderTimeStart] = useState('');\r\n    const [orderTimeEnd, setOrderTimeEnd] = useState('');\r\n\r\n    // Handle changes in date and time inputs\r\n    const handleDateChange = (e) => setOrderDate(e.target.value);\r\n    const handleTimeStartChange = (e) => setOrderTimeStart(e.target.value);\r\n    const handleTimeEndChange = (e) => setOrderTimeEnd(e.target.value);\r\n\r\n    return (\r\n        <>\r\n            <div className=\"middle-box\">\r\n                <OrderHistory_filter\r\n                    orderDate={orderDate}\r\n                    orderTimeStart={orderTimeStart}\r\n                    orderTimeEnd={orderTimeEnd}\r\n                    handleDateChange={handleDateChange}\r\n                    handleTimeStartChange={handleTimeStartChange}\r\n                    handleTimeEndChange={handleTimeEndChange}\r\n                />\r\n                <OrderHistory_table />\r\n            </div>\r\n        </>\r\n    );\r\n};\r\n\r\nexport default OrderHistory;\r\n\r\n"
+        }
+    ]
+}

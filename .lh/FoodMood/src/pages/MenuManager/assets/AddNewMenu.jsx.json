@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 3,
+            "activePatchIndex": 4,
             "patches": [
                 {
                     "date": 1739559269548,
@@ -20,6 +20,10 @@
                 {
                     "date": 1739613044381,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,9 @@\n     1. กดแก้ไขแล้วมันไม่ดึงข้อมูลไปแก้\r\n */}\r\n \r\n \r\n-const AddNewMenu = ({ form, dataToEdit, onCancel }) => {\r\n+const AddNewMenu = ({ form, dataToEdit, onCancel,setShowItemDetail }) => {\r\n     const [menuName, setMenuName] = useState('');\r\n     const [category_id, setCategory_id] = useState('1');\r\n     const [category, setCategory] = useState('1');\r\n     const [sizePrices, setSizePrices] = useState([]);\r\n@@ -180,8 +180,9 @@\n                 sizePrices,\r\n                 customOptions,\r\n             };\r\n             axios.put(`http://localhost:5000/api/foods/${dataToEdit._id}`, editedMenu)\r\n+            setShowItemDetail(false);\r\n         } else {\r\n             const newMenu = {\r\n                 name: menuName,\r\n                 category_id,\r\n@@ -190,8 +191,9 @@\n                 sizePrices,\r\n                 customOptions,\r\n             };\r\n             axios.post('http://localhost:5000/api/foods', newMenu)\r\n+            setShowItemDetail(false);\r\n         }\r\n     };\r\n \r\n     return (\r\n"
+                },
+                {
+                    "date": 1740398597574,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -196,9 +196,9 @@\n         }\r\n     };\r\n \r\n     return (\r\n-        <div className=\"right-box\">\r\n+        <>\r\n             {!ingredientScreen ? (\r\n                 <form onSubmit={(e) => e.preventDefault()}>\r\n                     <div className=\"right-box-header text-center fs-18 fw-5\">เพิ่มเมนูใหม่</div>\r\n \r\n@@ -356,9 +356,9 @@\n                     }}\r\n                     onBack={() => setIngredientScreen(false)}\r\n                 />\r\n             )}\r\n-        </div>\r\n+        </>\r\n     );\r\n };\r\n \r\n export default AddNewMenu;\r\n"
                 }
             ],
             "date": 1739559269548,

@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 48,
+            "activePatchIndex": 50,
             "patches": [
                 {
                     "date": 1739603280425,
@@ -200,6 +200,14 @@
                 {
                     "date": 1739693509916,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -38,9 +38,8 @@\n             setSelectedData(prev => ({ ...prev, orderStatus: newStatus }));\r\n         }\r\n     };\r\n     \r\n-\r\n     const statusOptions = [\r\n         { id: \"all\", name: \"ทั้งหมด\" },\r\n         { id: 1, name: \"ยังไม่เริ่ม\" },\r\n         { id: 2, name: \"กำลังทำ\" },\r\n"
+                },
+                {
+                    "date": 1740240199181,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -85,9 +85,9 @@\n         }\r\n     };\r\n \r\n     return (\r\n-        <div>\r\n+        <div className='container'>\r\n             <div className=\"middle-box\">\r\n                 {/* Search Bar */}\r\n                 <div className=\"search-bar\">\r\n                     <input\r\n"
+                },
+                {
+                    "date": 1740378833398,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -85,9 +85,9 @@\n         }\r\n     };\r\n \r\n     return (\r\n-        <div className='container'>\r\n+        <>\r\n             <div className=\"middle-box\">\r\n                 {/* Search Bar */}\r\n                 <div className=\"search-bar\">\r\n                     <input\r\n@@ -122,9 +122,9 @@\n                         selectedOrder={selectedData} \r\n                         onClose={() => setSelectedData(null)} \r\n                         updateOrder={updateOrder} />\r\n             )}\r\n-        </div>\r\n+        </>\r\n     );\r\n };\r\n \r\n export default OrderCheck;\r\n"
                 }
             ],
             "date": 1739603280425,

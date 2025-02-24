@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 5,
+            "activePatchIndex": 21,
             "patches": [
                 {
                     "date": 1739558008022,
@@ -28,6 +28,70 @@
                 {
                     "date": 1740148992722,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -40,10 +40,14 @@\n .container {\r\n   display: flex;\r\n }\r\n \r\n+.main-content {\r\n+  flex-grow: 1;\r\n+  overflow-y: auto;\r\n+  background-color: #f4f4f4;\r\n+}\r\n \r\n-\r\n .middle-box {\r\n   width: 75%;\r\n   height: 100vh;\r\n   background-color: var(--white-color);\r\n"
+                },
+                {
+                    "date": 1740398509363,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -62,9 +62,8 @@\n   border-radius: 8px;\r\n   padding: 20px;\r\n   height: 100vh;\r\n   width: 43vh;\r\n-  margin-left: 20px;\r\n   position: relative;\r\n   overflow-y: auto;\r\n }\r\n \r\n"
+                },
+                {
+                    "date": 1740408774657,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -35,8 +35,9 @@\n p {\r\n   display: flex;\r\n   align-items: flex-start;\r\n   font-family: 'IBM Plex Sans Thai';\r\n+  line-height: 1.2;\r\n }\r\n .container {\r\n   display: flex;\r\n }\r\n"
+                },
+                {
+                    "date": 1740408788239,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -35,9 +35,9 @@\n p {\r\n   display: flex;\r\n   align-items: flex-start;\r\n   font-family: 'IBM Plex Sans Thai';\r\n-  line-height: 1.2;\r\n+  line-height: 1;\r\n }\r\n .container {\r\n   display: flex;\r\n }\r\n"
+                },
+                {
+                    "date": 1740408794108,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -35,9 +35,9 @@\n p {\r\n   display: flex;\r\n   align-items: flex-start;\r\n   font-family: 'IBM Plex Sans Thai';\r\n-  line-height: 1;\r\n+  line-height: 1.3;\r\n }\r\n .container {\r\n   display: flex;\r\n }\r\n"
+                },
+                {
+                    "date": 1740408817770,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -35,9 +35,9 @@\n p {\r\n   display: flex;\r\n   align-items: flex-start;\r\n   font-family: 'IBM Plex Sans Thai';\r\n-  line-height: 1.3;\r\n+  \r\n }\r\n .container {\r\n   display: flex;\r\n }\r\n"
+                },
+                {
+                    "date": 1740408843037,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,9 +18,8 @@\n \r\n * {\r\n   padding: 0;\r\n   margin: 0;\r\n-  box-sizing: border-box;\r\n }\r\n \r\n html {\r\n   font-size: 16px;\r\n@@ -35,9 +34,9 @@\n p {\r\n   display: flex;\r\n   align-items: flex-start;\r\n   font-family: 'IBM Plex Sans Thai';\r\n-  \r\n+  line-height: 1.4;\r\n }\r\n .container {\r\n   display: flex;\r\n }\r\n"
+                },
+                {
+                    "date": 1740408848306,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,8 +18,9 @@\n \r\n * {\r\n   padding: 0;\r\n   margin: 0;\r\n+  box-sizing: border-box;\r\n }\r\n \r\n html {\r\n   font-size: 16px;\r\n"
+                },
+                {
+                    "date": 1740409799532,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -357,9 +357,8 @@\n   background-color: var(--blue-color);\r\n   border: 1px solid var(--blue-color);\r\n   padding: 8px 13px;\r\n   border-radius: 20px;\r\n-  margin: 0 10px 10px 0;\r\n   transition: background-color 0.3s;\r\n }\r\n \r\n .blue-button:hover {\r\n"
+                },
+                {
+                    "date": 1740409807307,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -355,10 +355,10 @@\n   font-size: 15px;\r\n   color: var(--white-color);\r\n   background-color: var(--blue-color);\r\n   border: 1px solid var(--blue-color);\r\n-  padding: 8px 13px;\r\n   border-radius: 20px;\r\n+  margin: 0 10px 10px 0;\r\n   transition: background-color 0.3s;\r\n }\r\n \r\n .blue-button:hover {\r\n"
+                },
+                {
+                    "date": 1740409862790,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -355,10 +355,10 @@\n   font-size: 15px;\r\n   color: var(--white-color);\r\n   background-color: var(--blue-color);\r\n   border: 1px solid var(--blue-color);\r\n+  padding: 8px 13px;\r\n   border-radius: 20px;\r\n-  margin: 0 10px 10px 0;\r\n   transition: background-color 0.3s;\r\n }\r\n \r\n .blue-button:hover {\r\n"
+                },
+                {
+                    "date": 1740409874711,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -357,8 +357,9 @@\n   background-color: var(--blue-color);\r\n   border: 1px solid var(--blue-color);\r\n   padding: 8px 13px;\r\n   border-radius: 20px;\r\n+  margin: 0 10px 10px 0;\r\n   transition: background-color 0.3s;\r\n }\r\n \r\n .blue-button:hover {\r\n"
+                },
+                {
+                    "date": 1740409932499,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -352,8 +352,9 @@\n /* Button */\r\n .blue-button {\r\n   font-family: inherit;\r\n   font-size: 15px;\r\n+  height: 43px;\r\n   color: var(--white-color);\r\n   background-color: var(--blue-color);\r\n   border: 1px solid var(--blue-color);\r\n   padding: 8px 13px;\r\n"
+                },
+                {
+                    "date": 1740409941294,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -358,9 +358,8 @@\n   background-color: var(--blue-color);\r\n   border: 1px solid var(--blue-color);\r\n   padding: 8px 13px;\r\n   border-radius: 20px;\r\n-  margin: 0 10px 10px 0;\r\n   transition: background-color 0.3s;\r\n }\r\n \r\n .blue-button:hover {\r\n"
+                },
+                {
+                    "date": 1740409957127,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -368,8 +368,9 @@\n \r\n .red-button {\r\n   font-family: inherit;\r\n   font-size: 15px;\r\n+  height: 43px;\r\n   color: var(--red-color);\r\n   background-color: var(--white-color);\r\n   border: 1px solid var(--red-color);\r\n   padding: 8px 13px;\r\n"
+                },
+                {
+                    "date": 1740409965397,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -374,9 +374,8 @@\n   background-color: var(--white-color);\r\n   border: 1px solid var(--red-color);\r\n   padding: 8px 13px;\r\n   border-radius: 20px;\r\n-  margin: 0 10px 10px 0;\r\n   transition: background-color 0.3s;\r\n }\r\n \r\n .red-button:hover {\r\n"
+                },
+                {
+                    "date": 1740409973065,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -385,14 +385,14 @@\n \r\n .green-button {\r\n   font-family: inherit;\r\n   font-size: 15px;\r\n+  height: 43px;\r\n   color: var(--white-color);\r\n   background-color: #53cf68;\r\n   border: 1px solid #53cf68;\r\n   padding: 8px 13px;\r\n   border-radius: 20px;\r\n-  margin: 0 10px 10px 0;\r\n   transition: background-color 0.3s;\r\n }\r\n \r\n .green-button:hover {\r\n"
                 }
             ],
             "date": 1739558008022,
