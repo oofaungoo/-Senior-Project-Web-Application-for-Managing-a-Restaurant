@@ -1,0 +1,22 @@
+{
+    "sourceFile": "backend/models/orders.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1740610557437,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1740622070798,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,8 +22,12 @@\n             name: {\r\n                 type: String,\r\n                 default: ''\r\n             },\r\n+            category: {\r\n+                type: String,\r\n+                default: ''\r\n+            },\r\n             size: {\r\n                 type: String,\r\n                 default: ''\r\n             },\r\n"
+                }
+            ],
+            "date": 1740610557437,
+            "name": "Commit-0",
+            "content": "const mongoose = require('mongoose');\r\n\r\nconst orderSchema = new mongoose.Schema({\r\n    orderNumber: {\r\n        type: Number,\r\n        default: 0 // ค่าเริ่มต้นเป็น 1 แทน ''\r\n    },\r\n    employeeName: {\r\n        type: String,\r\n        default: ''\r\n    },\r\n    orderDate: {\r\n        type: String,\r\n        default: () => new Date().toISOString().split('T')[0] // YYYY-MM-DD\r\n    },\r\n    orderTime: {\r\n        type: String,\r\n        default: () => new Date().toLocaleTimeString() // HH:mm:ss AM/PM\r\n    },\r\n    orderItems: [\r\n        {\r\n            name: {\r\n                type: String,\r\n                default: ''\r\n            },\r\n            size: {\r\n                type: String,\r\n                default: ''\r\n            },\r\n            quantity: {\r\n                type: Number,\r\n                default: 1 // ค่าเริ่มต้นเป็น 1\r\n            },\r\n            note: {\r\n                type: String,\r\n                default: ''\r\n            },\r\n            selectedOptions: {\r\n                type: Map,\r\n                of: String,\r\n                default: () => ({}) // ต้องใช้ฟังก์ชันเพื่อคืนค่า object เปล่า\r\n            },\r\n            price: {\r\n                type: Number,\r\n                default: 0\r\n            }\r\n        }\r\n    ],\r\n    orderType: {\r\n        type: String,\r\n        default: ''\r\n    },\r\n    contactInfo: {\r\n        phoneNumber:{\r\n            type: String,\r\n            default: ''\r\n        },\r\n        tableNumber:{\r\n            type: String,\r\n            default: ''\r\n        },\r\n    },\r\n    totalPrice: {\r\n        type: Number,\r\n        default: 0\r\n    },\r\n    orderStatus: {\r\n        type: String,\r\n        default: ''\r\n    },\r\n    timestamp: {\r\n        type: Date,\r\n        default: Date.now\r\n    }\r\n});\r\n\r\nmodule.exports = mongoose.model('orders', orderSchema);\r\n"
+        }
+    ]
+}

@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 21,
+            "activePatchIndex": 28,
             "patches": [
                 {
                     "date": 1739558008022,
@@ -92,6 +92,34 @@
                 {
                     "date": 1740409973065,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -385,14 +385,14 @@\n \r\n .green-button {\r\n   font-family: inherit;\r\n   font-size: 15px;\r\n+  height: 43px;\r\n   color: var(--white-color);\r\n   background-color: #53cf68;\r\n   border: 1px solid #53cf68;\r\n   padding: 8px 13px;\r\n   border-radius: 20px;\r\n-  margin: 0 10px 10px 0;\r\n   transition: background-color 0.3s;\r\n }\r\n \r\n .green-button:hover {\r\n"
+                },
+                {
+                    "date": 1740413096979,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -103,9 +103,8 @@\n   padding: 10px;\r\n   border-radius: 5px;\r\n   border: 1px solid #ccc;\r\n   width: 100%;\r\n-  font-size: 16px;\r\n   transition: border-color 0.3s ease;\r\n }\r\n   \r\n input:focus {\r\n"
+                },
+                {
+                    "date": 1740413103105,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -103,8 +103,9 @@\n   padding: 10px;\r\n   border-radius: 5px;\r\n   border: 1px solid #ccc;\r\n   width: 100%;\r\n+  font-size: 16px;\r\n   transition: border-color 0.3s ease;\r\n }\r\n   \r\n input:focus {\r\n"
+                },
+                {
+                    "date": 1740476581903,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -40,8 +40,11 @@\n }\r\n .container {\r\n   display: flex;\r\n }\r\n+.swal2-container {\r\n+  z-index: 2000 !important;\r\n+}\r\n \r\n .main-content {\r\n   flex-grow: 1;\r\n   overflow-y: auto;\r\n"
+                },
+                {
+                    "date": 1740563631687,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,8 +4,10 @@\n   --red-color: #ff4b4b;\r\n   --dark-red-color: #ff7878;\r\n   --dark-blue-color: #007bff;\r\n   --blue-color: #64A2FF;\r\n+  --green-color: #62c965;\r\n+  --dark-green-color: #3b913e;\r\n   --light-blue-color-border: #afcfff;\r\n   --light-blue-color: #e3eeff;\r\n   --black-color: #000000;\r\n   --white-color: #fff;\r\n"
+                },
+                {
+                    "date": 1740563659216,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -370,8 +370,24 @@\n .blue-button:hover {\r\n   background-color: var(--dark-blue-color);\r\n }\r\n \r\n+.green-button {\r\n+  font-family: inherit;\r\n+  font-size: 15px;\r\n+  height: 43px;\r\n+  color: var(--white-color);\r\n+  background-color: var(--green-color);\r\n+  border: 1px solid var(--green-color);\r\n+  padding: 8px 13px;\r\n+  border-radius: 20px;\r\n+  transition: background-color 0.3s;\r\n+}\r\n+\r\n+.green-button:hover {\r\n+  background-color: var(--dark-green-color);\r\n+}\r\n+\r\n .red-button {\r\n   font-family: inherit;\r\n   font-size: 15px;\r\n   height: 43px;\r\n"
+                },
+                {
+                    "date": 1740569531277,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,8 +4,9 @@\n   --red-color: #ff4b4b;\r\n   --dark-red-color: #ff7878;\r\n   --dark-blue-color: #007bff;\r\n   --blue-color: #64A2FF;\r\n+  --yellow-color: #62c965;\r\n   --green-color: #62c965;\r\n   --dark-green-color: #3b913e;\r\n   --light-blue-color-border: #afcfff;\r\n   --light-blue-color: #e3eeff;\r\n"
+                },
+                {
+                    "date": 1740601508129,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -147,9 +147,8 @@\n   background-color: var(--white-color);\r\n   border: 1px solid #ddd;\r\n   padding: 8px 13px;\r\n   border-radius: 20px;\r\n-  margin: 0 10px 0 0;\r\n   cursor: pointer;\r\n   display: inline-block;\r\n   transition: background-color 0.3s, border-color 0.3s;\r\n }\r\n"
                 }
             ],
             "date": 1739558008022,
