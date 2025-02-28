@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 69,
+            "activePatchIndex": 72,
             "patches": [
                 {
                     "date": 1739603280425,
@@ -284,6 +284,18 @@
                 {
                     "date": 1740642670289,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,7 @@\n import React, { useState, useEffect } from \"react\";\r\n import { Box, Modal, useMediaQuery } from \"@mui/material\";\r\n+import \"./OrderCheck.css\";\r\n import axios from \"axios\";\r\n import OrderList from \"./assets/OrderList\";\r\n import OrderDetail from \"./assets/OrderDetail\";\r\n \r\n"
+                },
+                {
+                    "date": 1740742449142,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -58,14 +58,15 @@\n     };\r\n \r\n     const filteredOrders = data.filter((order) => {\r\n         const excludedStatuses = [\"เสร็จสิ้น\", \"ยกเลิก\"];\r\n-        const matchesStatus = filterStatus.includes(\"all\") || filterStatus.includes(order.status);\r\n+        const matchesStatus = filterStatus.includes(\"all\") || filterStatus.includes(order.orderStatus);\r\n         const matchesCategory = filterCategory === \"all\" || order.items.some((item) => item.category === filterCategory);\r\n         const matchesSearch = searchQuery === \"\" || (order.orderNumber && String(order.orderNumber).includes(searchQuery));\r\n     \r\n         return matchesStatus && matchesCategory && matchesSearch && !excludedStatuses.includes(order.orderStatus);\r\n     });\r\n+    \r\n \r\n     const selectOrder = (order) => {\r\n         setSelectedData(order);\r\n     };\r\n"
+                },
+                {
+                    "date": 1740742483269,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -44,19 +44,16 @@\n     const handleStatusChange = (statusId) => {\r\n         if (statusId === \"all\") {\r\n             setFilterStatus([\"all\"]);\r\n         } else {\r\n-            if (filterStatus.includes(\"all\")) {\r\n-                setFilterStatus([statusId]);\r\n-            } else {\r\n-                setFilterStatus((prev) =>\r\n-                    prev.includes(statusId)\r\n-                        ? prev.filter((id) => id !== statusId)\r\n-                        : [...prev, statusId]\r\n-                );\r\n-            }\r\n+            setFilterStatus((prev) =>\r\n+                prev.includes(\"all\") ? [statusId] : prev.includes(statusId)\r\n+                    ? prev.filter((id) => id !== statusId)\r\n+                    : [...prev, statusId]\r\n+            );\r\n         }\r\n     };\r\n+    \r\n \r\n     const filteredOrders = data.filter((order) => {\r\n         const excludedStatuses = [\"เสร็จสิ้น\", \"ยกเลิก\"];\r\n         const matchesStatus = filterStatus.includes(\"all\") || filterStatus.includes(order.orderStatus);\r\n"
+                },
+                {
+                    "date": 1740742639084,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -35,12 +35,12 @@\n     };\r\n \r\n     const statusOptions = [\r\n         { id: \"all\", name: \"ทั้งหมด\" },\r\n-        { id: 1, name: \"ยังไม่เริ่ม\" },\r\n-        { id: 2, name: \"กำลังทำ\" },\r\n-        { id: 3, name: \"พร้อมเสิร์ฟ\" },\r\n-    ];\r\n+        { id: \"ยังไม่เริ่ม\", name: \"ยังไม่เริ่ม\" },\r\n+        { id: \"กำลังทำ\", name: \"กำลังทำ\" },\r\n+        { id: \"พร้อมเสิร์ฟ\", name: \"พร้อมเสิร์ฟ\" },\r\n+    ];    \r\n \r\n     const handleStatusChange = (statusId) => {\r\n         if (statusId === \"all\") {\r\n             setFilterStatus([\"all\"]);\r\n"
                 }
             ],
             "date": 1739603280425,

@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 1,
+            "activePatchIndex": 3,
             "patches": [
                 {
                     "date": 1740610557437,
@@ -12,6 +12,14 @@
                 {
                     "date": 1740622070798,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,8 +22,12 @@\n             name: {\r\n                 type: String,\r\n                 default: ''\r\n             },\r\n+            category: {\r\n+                type: String,\r\n+                default: ''\r\n+            },\r\n             size: {\r\n                 type: String,\r\n                 default: ''\r\n             },\r\n"
+                },
+                {
+                    "date": 1740728634966,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,13 +10,13 @@\n         default: ''\r\n     },\r\n     orderDate: {\r\n         type: String,\r\n-        default: () => new Date().toISOString().split('T')[0] // YYYY-MM-DD\r\n+        default: \"\"\r\n     },\r\n     orderTime: {\r\n         type: String,\r\n-        default: () => new Date().toLocaleTimeString() // HH:mm:ss AM/PM\r\n+        default: \"\"\"\"\r\n     },\r\n     orderItems: [\r\n         {\r\n             name: {\r\n"
+                },
+                {
+                    "date": 1740728667189,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,14 +10,18 @@\n         default: ''\r\n     },\r\n     orderDate: {\r\n         type: String,\r\n-        default: \"\"\r\n+        default: ''\r\n     },\r\n     orderTime: {\r\n         type: String,\r\n-        default: \"\"\"\"\r\n+        default: ''\r\n     },\r\n+    orderFinishTime: {\r\n+        type: String,\r\n+        default: ''\r\n+    },\r\n     orderItems: [\r\n         {\r\n             name: {\r\n                 type: String,\r\n"
                 }
             ],
             "date": 1740610557437,

@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 5,
+            "activePatchIndex": 7,
             "patches": [
                 {
                     "date": 1739604757952,
@@ -28,6 +28,14 @@
                 {
                     "date": 1740610589399,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -39,8 +39,9 @@\n         }\r\n \r\n         const order = new dataDB({\r\n             orderNumber: newOrderNumber,\r\n+            employeeName: req.body.employeeName,\r\n             orderDate: todayDate,\r\n             orderTime: new Intl.DateTimeFormat('en-GB', {\r\n                 hour: '2-digit',\r\n                 minute: '2-digit',\r\n"
+                },
+                {
+                    "date": 1740728687527,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -47,8 +47,9 @@\n                 minute: '2-digit',\r\n                 second: '2-digit',\r\n                 hour12: false,  // Ensures 24-hour format\r\n             }).format(new Date()),\r\n+            orderFinishTime: '',\r\n             orderItems: req.body.items,\r\n             orderType: req.body.orderType,\r\n             contactInfo: req.body.contactInfo,\r\n             orderStatus: 'ยังไม่เริ่ม',\r\n"
+                },
+                {
+                    "date": 1740728705942,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -62,9 +62,8 @@\n         res.status(400).json({ message: error.message });\r\n     }\r\n });\r\n \r\n-\r\n // 📌 Update an order by ID\r\n router.put('/:id', async (req, res) => {\r\n     try {\r\n         const updatedOrder = await dataDB.findByIdAndUpdate(\r\n"
                 }
             ],
             "date": 1739604757952,

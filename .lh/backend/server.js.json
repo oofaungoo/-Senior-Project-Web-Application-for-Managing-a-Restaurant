@@ -1,0 +1,22 @@
+{
+    "sourceFile": "backend/server.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1740743428820,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1740743456795,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n const User_route = require('./routes/users_route');\r\n const Food_route = require('./routes/foods_route');\r\n const Add_menu_route = require('./routes/add_menus_route');\r\n const Ingredients_route = require('./routes/ingredients_route');\r\n-const ingredient_categories = require('./routes/ingredient_categories_route');\r\n+const Ingredient_categories = require('./routes/ingredient_categories_route');\r\n const Role_route = require('./routes/roles_route');\r\n const Order_route = require('./routes/order_routes');\r\n \r\n const app = express();\r\n@@ -27,8 +27,9 @@\n app.use('/api/users', User_route);\r\n app.use('/api/foods', Food_route);\r\n app.use('/api/add_menus', Add_menu_route);\r\n app.use('/api/ingredients', Ingredients_route);\r\n+app.use('/api/ingredient_categories', Ingredient_categories)\r\n app.use('/api/roles', Role_route);\r\n app.use('/api/orders', Order_route);\r\n \r\n // Server Start\r\n"
+                }
+            ],
+            "date": 1740743428820,
+            "name": "Commit-0",
+            "content": "const express = require('express');\r\nconst cors = require('cors');\r\nconst mongoose = require('mongoose');\r\nconst User_route = require('./routes/users_route');\r\nconst Food_route = require('./routes/foods_route');\r\nconst Add_menu_route = require('./routes/add_menus_route');\r\nconst Ingredients_route = require('./routes/ingredients_route');\r\nconst ingredient_categories = require('./routes/ingredient_categories_route');\r\nconst Role_route = require('./routes/roles_route');\r\nconst Order_route = require('./routes/order_routes');\r\n\r\nconst app = express();\r\nconst PORT = 5000;\r\n\r\n// Middleware\r\napp.use(cors()); // อนุญาตให้ Frontend เชื่อมต่อ\r\napp.use(express.json()); // อ่านข้อมูลแบบ json\r\n\r\n// Connect to MongoDB\r\nmongoose.connect(\"mongodb://127.0.0.1:27017/foodmood\", {useNewUrlParser: true,useUnifiedTopology: true,}).then(() => console.log(\"MongoDB Connected\")).catch((err) => console.error(\"MongoDB Connection Error:\", err));\r\n\r\n// Routes\r\napp.get('/api', (req, res) => {\r\n    res.send( 'Hello World' );\r\n});\r\n\r\napp.use('/api/users', User_route);\r\napp.use('/api/foods', Food_route);\r\napp.use('/api/add_menus', Add_menu_route);\r\napp.use('/api/ingredients', Ingredients_route);\r\napp.use('/api/roles', Role_route);\r\napp.use('/api/orders', Order_route);\r\n\r\n// Server Start\r\napp.listen(PORT, () => {\r\n    console.log(`Server is running on http://localhost:${PORT}`);\r\n});"
+        }
+    ]
+}

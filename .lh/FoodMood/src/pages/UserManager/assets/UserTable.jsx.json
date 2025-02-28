@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 30,
+            "activePatchIndex": 33,
             "patches": [
                 {
                     "date": 1740643138312,
@@ -128,6 +128,18 @@
                 {
                     "date": 1740646902477,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,11 +7,8 @@\n     const getRoleName = (roleId) => {\r\n         console.log(\"Role ที่มีในระบบ\", roleOptions)\r\n         console.log(\"ข้อมูลของ User\", data)\r\n \r\n-        console.log(\"🔍 Role Options:\", JSON.stringify(roleOptions, null, 2));\r\n-console.log(\"🔍 role_id ที่หา:\", roleId);\r\n-\r\n     };\r\n \r\n \r\n     const columns = [\r\n"
+                },
+                {
+                    "date": 1740740384686,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -51,12 +51,12 @@\n             <DataGrid\r\n                 getRowId={(row) => row._id}\r\n                 rows={data}\r\n                 columns={columns}\r\n-                autoPageSize  // ปรับขนาดตามข้อมูลอัตโนมัติ\r\n                 sx={{ fontSize: 16, fontFamily: 'inherit' }}\r\n                 disableSelectionOnClick\r\n                 disableColumnMenu\r\n+                autoPageSize\r\n             />\r\n         </div>\r\n     );\r\n };\r\n"
+                },
+                {
+                    "date": 1740742299954,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,8 +9,12 @@\n         console.log(\"ข้อมูลของ User\", data)\r\n \r\n     };\r\n \r\n+    const filteredData = data.filter(user => \r\n+        user.name.toLowerCase().includes(searchQuery.toLowerCase())\r\n+    );\r\n+    \r\n \r\n     const columns = [\r\n         { field: 'username', headerName: 'Username', flex: 1, minWidth: 150 },\r\n         { field: 'name', headerName: 'ชื่อ', flex: 1, minWidth: 130 },\r\n"
+                },
+                {
+                    "date": 1740742310473,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,11 +9,8 @@\n         console.log(\"ข้อมูลของ User\", data)\r\n \r\n     };\r\n \r\n-    const filteredData = data.filter(user => \r\n-        user.name.toLowerCase().includes(searchQuery.toLowerCase())\r\n-    );\r\n     \r\n \r\n     const columns = [\r\n         { field: 'username', headerName: 'Username', flex: 1, minWidth: 150 },\r\n"
                 }
             ],
             "date": 1740643138312,
