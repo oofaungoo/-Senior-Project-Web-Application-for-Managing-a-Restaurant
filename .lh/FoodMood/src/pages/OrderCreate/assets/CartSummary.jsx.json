@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 138,
+            "activePatchIndex": 141,
             "patches": [
                 {
                     "date": 1739620835698,
@@ -560,6 +560,18 @@
                 {
                     "date": 1740734863313,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -35,9 +35,9 @@\n         setPhoneNumber('');\r\n         setTableNumber('');\r\n     };\r\n \r\n-    const isDineIn = paidOption === 'ทานที่ร้าน' || 'สั่งแบบไม่ต้องจ่าย';\r\n+    const isDineIn = paidOption === 'ทานที่ร้าน' || paidOption === 'สั่งแบบไม่ต้องจ่าย';\r\n \r\n     const handleSave = () => {\r\n         const newOrder = {\r\n             orderNumber,\r\n@@ -118,9 +118,9 @@\n                     <span className='right'>{displayedTotalPrice}</span>\r\n                 </div>\r\n             </Grid>\r\n             <Grid marginTop=\"auto\">\r\n-                <Grid sx={{ marginBottom: \"8px\", height: \"176px\", paddingTop: \"8px\",  borderTop: \"1px solid #ddd\" }}>\r\n+                <Grid sx={{ marginBottom: \"8px\", height: \"176px\", paddingTop: \"8px\", borderTop: \"1px solid #ddd\" }}>\r\n                     <label>ตัวเลือกการรับอาหาร: </label>\r\n                     <select value={paidOption} onChange={handlePaidOptionChange}>\r\n                         <option value=\"ยังไม่ระบุ\">ยังไม่ระบุ</option>\r\n                         <option value=\"ทานที่ร้าน\">🍽️ ทานที่ร้าน</option>\r\n"
+                },
+                {
+                    "date": 1740826745378,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n import { FaRegTrashAlt } from \"react-icons/fa\";\r\n import { Grid, Box } from '@mui/system';\r\n import Swal from 'sweetalert2';\r\n \r\n-const CartSummary = ({ cartItems, totalPrice, handleEditItem, handleRemoveItem, onSave }) => {\r\n+const CartSummary = ({ cartItems, staff, totalPrice, handleEditItem, handleRemoveItem, onSave }) => {\r\n     const [paidOption, setPaidOption] = useState('ยังไม่ระบุ');\r\n     const [phoneNumber, setPhoneNumber] = useState('');\r\n     const [tableNumber, setTableNumber] = useState('');\r\n     const [orderNumber, setOrderNumber] = useState(null);\r\n"
+                },
+                {
+                    "date": 1740826816945,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n import { FaRegTrashAlt } from \"react-icons/fa\";\r\n import { Grid, Box } from '@mui/system';\r\n import Swal from 'sweetalert2';\r\n \r\n-const CartSummary = ({ cartItems, staff, totalPrice, handleEditItem, handleRemoveItem, onSave }) => {\r\n+const CartSummary = ({ cartItems, staffName, totalPrice, handleEditItem, handleRemoveItem, onSave }) => {\r\n     const [paidOption, setPaidOption] = useState('ยังไม่ระบุ');\r\n     const [phoneNumber, setPhoneNumber] = useState('');\r\n     const [tableNumber, setTableNumber] = useState('');\r\n     const [orderNumber, setOrderNumber] = useState(null);\r\n"
+                },
+                {
+                    "date": 1740826822151,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -40,9 +40,9 @@\n \r\n     const handleSave = () => {\r\n         const newOrder = {\r\n             orderNumber,\r\n-            employeeName: \"Tester404\",\r\n+            employeeName: staffName,\r\n             items: cartItems,\r\n             total: displayedTotalPrice,\r\n             orderType: paidOption,\r\n             contactInfo: isDineIn ? { tableNumber } : { phoneNumber },\r\n"
                 }
             ],
             "date": 1739620835698,

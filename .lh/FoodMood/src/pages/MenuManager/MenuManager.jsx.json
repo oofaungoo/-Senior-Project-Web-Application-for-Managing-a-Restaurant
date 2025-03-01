@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 149,
+            "activePatchIndex": 152,
             "patches": [
                 {
                     "date": 1739558701777,
@@ -604,6 +604,18 @@
                 {
                     "date": 1740581679723,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,14 +6,8 @@\n import axios from 'axios';\r\n import Swal from 'sweetalert2';\r\n import { Box, Modal, useMediaQuery } from \"@mui/material\";\r\n \r\n-{/*    BUG\r\n-    1. เวลาเพิ่มเมนูใหม่เข้าไป มันไม่ยอมแสดงขึ้นให้ ต้อง refresh\r\n-    2. เวลาจะแก้ไข special option ไม่ยอมมาด้วย เหมือนต้องใส่ใหม่ไปเลย + ต้องหาวิธีให้มันแก้ไขได้\r\n-    3. แทนที่ระบบจะกำหนด form\r\n-*/}\r\n-\r\n const MenuManager = () => {\r\n     const isMobile = useMediaQuery(\"(max-width: 767px)\");\r\n     const isTablet = useMediaQuery(\"(min-width: 768px) and (max-width: 1040px)\");\r\n \r\n@@ -26,10 +20,8 @@\n     const [dataToEdit, setDataToEdit] = useState(null);             // Edit data\r\n     const [isEditing, setIsEditing] = useState(false);              // Add & Edit data (mode toggle)\r\n     const [dataToDelete, setDataToDelete] = useState(null);         // Delete data\r\n \r\n-    \r\n-\r\n     const [saveState, setSaveState] = useState(false);\r\n     // API: Fetch data from database\r\n     useEffect(() => {\r\n         axios.get('http://localhost:5000/api/foods')\r\n"
+                },
+                {
+                    "date": 1740829204573,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,12 +23,17 @@\n \r\n     const [saveState, setSaveState] = useState(false);\r\n     // API: Fetch data from database\r\n     useEffect(() => {\r\n+        const token = localStorage.getItem(\"token\");\r\n+        if (!token) {\r\n+            Swal.fire({ title: \"Sesstion ของคุณหมดอายุ\", text: \"กรุณาเข้าสู่ระบบใหม่\", icon: \"warning\", confirmButtonColor: \"#64A2FF\", confirmButtonText: \"OK\" })\r\n+                .then(() => { navigate('/'); });\r\n+            return;\r\n+        }\r\n         axios.get('http://localhost:5000/api/foods')\r\n             .then(res => { setData(res.data) })\r\n             .catch(err => console.error('Error fetching :', err));\r\n-\r\n         axios.get('http://localhost:5000/api/add_menus/category')\r\n             .then(res => {\r\n                 setCategory(res.data)\r\n             })\r\n"
+                },
+                {
+                    "date": 1740829212739,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,8 +9,9 @@\n \r\n const MenuManager = () => {\r\n     const isMobile = useMediaQuery(\"(max-width: 767px)\");\r\n     const isTablet = useMediaQuery(\"(min-width: 768px) and (max-width: 1040px)\");\r\n+    const navigate = useNavigate();\r\n \r\n     const [data, setData] = useState([]);       // Collecting datas from API     \r\n     const [category, setCategory] = useState([]); // Collecting category from API\r\n     const [showEditData, setShowEditData] = useState(false);        // show AddNewMenu.jsx\r\n"
+                },
+                {
+                    "date": 1740829222426,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,6 @@\n import React, { useEffect, useState } from 'react';\r\n+import { useNavigate } from 'react-router-dom';\r\n import './MenuManager.css';\r\n import AddNewMenu from './assets/AddNewMenu';\r\n import MenuItemDetail from './assets/MenuItemDetail';\r\n import MenuList from './assets/MenuList';\r\n"
                 }
             ],
             "date": 1739558701777,

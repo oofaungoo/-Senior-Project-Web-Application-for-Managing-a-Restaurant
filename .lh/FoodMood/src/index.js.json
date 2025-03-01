@@ -1,0 +1,22 @@
+{
+    "sourceFile": "FoodMood/src/index.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1740819149309,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1740819179442,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,8 +19,9 @@\n   <React.StrictMode>\r\n     <BrowserRouter>\r\n       <Routes>\r\n         <Route path=\"/\" element={<Login />} />\r\n+        <Route path=\"/master/register\" element={<Register />} />\r\n         <Route element={<AppLayout />}>\r\n           <Route path=\"OrderCreate\" element={<OrderCreate />} />\r\n           <Route path=\"OrderCheck\" element={<OrderCheck />} />\r\n           <Route path=\"OrderHistory\" element={<OrderHistory />} />\r\n"
+                }
+            ],
+            "date": 1740819149309,
+            "name": "Commit-0",
+            "content": "import React from 'react';\r\nimport ReactDOM from 'react-dom/client';\r\nimport { BrowserRouter, Route, Routes } from 'react-router-dom';\r\nimport './index.css';\r\nimport AppLayout from './AppLayout';\r\nimport Register from './pages/Register/Register';\r\nimport Login from './pages/Login/Login';\r\nimport OrderCreate from './pages/OrderCreate/OrderCreate';\r\nimport OrderCheck from './pages/OrderCheck/OrderCheck';\r\nimport OrderHistory from './pages/OrderHistory/OrderHistory';\r\nimport IngredientManagement from './pages/IngredientManager/In2';\r\nimport MenuManager from './pages/MenuManager/MenuManager';\r\nimport UserManager from './pages/UserManager/UserManager';\r\nimport Noti from './pages/Noti/Noti';\r\n\r\n\r\nconst root = ReactDOM.createRoot(document.getElementById('root'));\r\nroot.render(\r\n  <React.StrictMode>\r\n    <BrowserRouter>\r\n      <Routes>\r\n        <Route path=\"/\" element={<Login />} />\r\n        <Route element={<AppLayout />}>\r\n          <Route path=\"OrderCreate\" element={<OrderCreate />} />\r\n          <Route path=\"OrderCheck\" element={<OrderCheck />} />\r\n          <Route path=\"OrderHistory\" element={<OrderHistory />} />\r\n          <Route path=\"IngredientManagement\" element={<IngredientManagement />} />\r\n          <Route path=\"MenuManager\" element={<MenuManager />} />\r\n          <Route path=\"UserManager\" element={<UserManager />} />\r\n          <Route path=\"Noti\" element={<Noti />} />\r\n        </Route>\r\n      </Routes>\r\n    </BrowserRouter>\r\n  </React.StrictMode>\r\n);\r\n"
+        }
+    ]
+}

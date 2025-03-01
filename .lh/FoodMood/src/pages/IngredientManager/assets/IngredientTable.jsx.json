@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 51,
+            "activePatchIndex": 54,
             "patches": [
                 {
                     "date": 1740603524399,
@@ -212,6 +212,18 @@
                 {
                     "date": 1740742869218,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n const IngredientTable = ({ data = [], onEdit, handleClickConfirm }) => {\r\n     const columns = [\r\n         { field: 'name', headerName: 'วัตถุดิบ', width: 140 },\r\n         { field: 'group', headerName: 'หมวดหมู่', width: 140 },\r\n-        { field: 'remain', headerName: 'คงเหลือ', type: 'number', width: 140 , headerAlign: 'left', align: 'left' },\r\n+        { field: 'remain', headerName: 'คงเหลือ', type: 'number', width: 140, headerAlign: 'left', align: 'left' },\r\n         { field: 'min', headerName: 'ขั้นต่ำ', type: 'number', width: 120, headerAlign: 'left', align: 'left' },\r\n         { field: 'unit', headerName: 'หน่วย',  width: 70 },\r\n         {\r\n             field: 'actions', headerName: 'Edit & Delete', width: 120,  sortable: false,\r\n"
+                },
+                {
+                    "date": 1740817696664,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n     const columns = [\r\n         { field: 'name', headerName: 'วัตถุดิบ', width: 140 },\r\n         { field: 'group', headerName: 'หมวดหมู่', width: 140 },\r\n         { field: 'remain', headerName: 'คงเหลือ', type: 'number', width: 140, headerAlign: 'left', align: 'left' },\r\n-        { field: 'min', headerName: 'ขั้นต่ำ', type: 'number', width: 120, headerAlign: 'left', align: 'left' },\r\n+        { field: 'min', headerName: 'ขั้นต่ำ', type: 'number', width: 140, headerAlign: 'left', align: 'left' },\r\n         { field: 'unit', headerName: 'หน่วย',  width: 70 },\r\n         {\r\n             field: 'actions', headerName: 'Edit & Delete', width: 120,  sortable: false,\r\n             renderCell: (params) => (\r\n@@ -20,9 +20,9 @@\n                 </>\r\n             )\r\n         }\r\n     ];\r\n-\r\n+    console.log(res)\r\n     return (\r\n         <div style={{ height: '83%', width: '100%' }}>\r\n             <DataGrid\r\n                 getRowId={(row) => row._id}     //เชื่อมกับ id ใน database ของเรา แต่ id ใน database เป็น _id\r\n"
+                },
+                {
+                    "date": 1740817709159,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,9 @@\n                 </>\r\n             )\r\n         }\r\n     ];\r\n-    console.log(res)\r\n+    console.log(data)\r\n     return (\r\n         <div style={{ height: '83%', width: '100%' }}>\r\n             <DataGrid\r\n                 getRowId={(row) => row._id}     //เชื่อมกับ id ใน database ของเรา แต่ id ใน database เป็น _id\r\n"
+                },
+                {
+                    "date": 1740830488706,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,8 @@\n                 </>\r\n             )\r\n         }\r\n     ];\r\n-    console.log(data)\r\n     return (\r\n         <div style={{ height: '83%', width: '100%' }}>\r\n             <DataGrid\r\n                 getRowId={(row) => row._id}     //เชื่อมกับ id ใน database ของเรา แต่ id ใน database เป็น _id\r\n"
                 }
             ],
             "date": 1740603524399,

@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 33,
+            "activePatchIndex": 39,
             "patches": [
                 {
                     "date": 1740643138312,
@@ -140,6 +140,30 @@
                 {
                     "date": 1740742310473,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,11 +9,8 @@\n         console.log(\"ข้อมูลของ User\", data)\r\n \r\n     };\r\n \r\n-    const filteredData = data.filter(user => \r\n-        user.name.toLowerCase().includes(searchQuery.toLowerCase())\r\n-    );\r\n     \r\n \r\n     const columns = [\r\n         { field: 'username', headerName: 'Username', flex: 1, minWidth: 150 },\r\n"
+                },
+                {
+                    "date": 1740817959743,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,10 +9,8 @@\n         console.log(\"ข้อมูลของ User\", data)\r\n \r\n     };\r\n \r\n-    \r\n-\r\n     const columns = [\r\n         { field: 'username', headerName: 'Username', flex: 1, minWidth: 150 },\r\n         { field: 'name', headerName: 'ชื่อ', flex: 1, minWidth: 130 },\r\n         {\r\n"
+                },
+                {
+                    "date": 1740818106235,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,10 +4,9 @@\n \r\n const UserTable = ({ data = [], onEdit, roleOptions, handleClickConfirm }) => {\r\n \r\n     const getRoleName = (roleId) => {\r\n-        console.log(\"Role ที่มีในระบบ\", roleOptions)\r\n-        console.log(\"ข้อมูลของ User\", data)\r\n+       \r\n \r\n     };\r\n \r\n     const columns = [\r\n"
+                },
+                {
+                    "date": 1740818955104,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n     const columns = [\r\n         { field: 'username', headerName: 'Username', flex: 1, minWidth: 150 },\r\n         { field: 'name', headerName: 'ชื่อ', flex: 1, minWidth: 130 },\r\n         {\r\n-            field: 'role_id',\r\n+            field: 'role_name',\r\n             headerName: 'ตำแหน่ง',\r\n             flex: 1,\r\n             minWidth: 140,\r\n             valueGetter: (params) => getRoleName(params.value)\r\n"
+                },
+                {
+                    "date": 1740819007074,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,10 +15,9 @@\n         {\r\n             field: 'role_name',\r\n             headerName: 'ตำแหน่ง',\r\n             flex: 1,\r\n-            minWidth: 140,\r\n-            valueGetter: (params) => getRoleName(params.value)\r\n+            minWidth: 140\r\n         },\r\n         {\r\n             field: 'phone_number',\r\n             headerName: 'เบอร์โทร',\r\n"
+                },
+                {
+                    "date": 1740819022070,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,13 +3,8 @@\n import { DataGrid } from '@mui/x-data-grid';\r\n \r\n const UserTable = ({ data = [], onEdit, roleOptions, handleClickConfirm }) => {\r\n \r\n-    const getRoleName = (roleId) => {\r\n-       \r\n-\r\n-    };\r\n-\r\n     const columns = [\r\n         { field: 'username', headerName: 'Username', flex: 1, minWidth: 150 },\r\n         { field: 'name', headerName: 'ชื่อ', flex: 1, minWidth: 130 },\r\n         {\r\n"
+                },
+                {
+                    "date": 1740824101294,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n import React from 'react';\r\n import { FaRegTrashAlt } from 'react-icons/fa';\r\n import { DataGrid } from '@mui/x-data-grid';\r\n \r\n-const UserTable = ({ data = [], onEdit, roleOptions, handleClickConfirm }) => {\r\n+const UserTable = ({ data = [], onEdit, onClick }) => {\r\n \r\n     const columns = [\r\n         { field: 'username', headerName: 'Username', flex: 1, minWidth: 150 },\r\n         { field: 'name', headerName: 'ชื่อ', flex: 1, minWidth: 130 },\r\n@@ -29,9 +29,9 @@\n             sortable: false,\r\n             renderCell: (params) => (\r\n                 <>\r\n                     <button className=\"edit-btn\" onClick={() => onEdit(params.row)}>✏️</button>\r\n-                    <button className=\"edit-btn text-red\" onClick={() => handleClickConfirm(params.row)}>\r\n+                    <button className=\"edit-btn text-red\" onClick={() => onClick(params.row)}>\r\n                         <FaRegTrashAlt />\r\n                     </button>\r\n                 </>\r\n             )\r\n"
                 }
             ],
             "date": 1740643138312,
