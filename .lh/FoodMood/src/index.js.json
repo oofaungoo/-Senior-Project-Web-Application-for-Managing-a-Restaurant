@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 1,
+            "activePatchIndex": 2,
             "patches": [
                 {
                     "date": 1740819149309,
@@ -12,6 +12,10 @@
                 {
                     "date": 1740819179442,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,8 +19,9 @@\n   <React.StrictMode>\r\n     <BrowserRouter>\r\n       <Routes>\r\n         <Route path=\"/\" element={<Login />} />\r\n+        <Route path=\"/master/register\" element={<Register />} />\r\n         <Route element={<AppLayout />}>\r\n           <Route path=\"OrderCreate\" element={<OrderCreate />} />\r\n           <Route path=\"OrderCheck\" element={<OrderCheck />} />\r\n           <Route path=\"OrderHistory\" element={<OrderHistory />} />\r\n"
+                },
+                {
+                    "date": 1740911562932,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,10 +11,10 @@\n import IngredientManagement from './pages/IngredientManager/In2';\r\n import MenuManager from './pages/MenuManager/MenuManager';\r\n import UserManager from './pages/UserManager/UserManager';\r\n import Noti from './pages/Noti/Noti';\r\n+import Dashboard from './pages/Dashboard/Dashboard';\r\n \r\n-\r\n const root = ReactDOM.createRoot(document.getElementById('root'));\r\n root.render(\r\n   <React.StrictMode>\r\n     <BrowserRouter>\r\n@@ -28,8 +28,9 @@\n           <Route path=\"IngredientManagement\" element={<IngredientManagement />} />\r\n           <Route path=\"MenuManager\" element={<MenuManager />} />\r\n           <Route path=\"UserManager\" element={<UserManager />} />\r\n           <Route path=\"Noti\" element={<Noti />} />\r\n+          <Route path=\"Dashboard\" element={<Dashboard />} />\r\n         </Route>\r\n       </Routes>\r\n     </BrowserRouter>\r\n   </React.StrictMode>\r\n"
                 }
             ],
             "date": 1740819149309,
