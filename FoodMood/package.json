@@ -2,7 +2,7 @@
   "name": "first_move",
   "version": "0.1.0",
   "private": true,
-  "homepage": ".",
+  "homepage": "FoodMood",
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
