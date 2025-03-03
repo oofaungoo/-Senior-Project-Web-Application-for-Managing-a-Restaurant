@@ -1,5 +1,5 @@
 [build]
-  base = "FoodMood"
+  base = "."
   command = "npm run build"
   publish = "build"
 
@@ -7,3 +7,14 @@
   from = "/*"
   to = "/index.html"
   status = 200
+
+
+#[build]
+#  base = "FoodMood"
+#  command = "npm run build"
+#  publish = "build"
+
+# [[redirects]]
+#  from = "/*"
+#  to = "/index.html"
+#  status = 200
