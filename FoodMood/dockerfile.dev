@@ -1,0 +1,29 @@
+# Stage 1: Dockerize
+FROM powerman/dockerize:0.19.0 AS dockerize
+
+# Stage 2: Build React App
+FROM node:18 AS build
+WORKDIR /app
+
+# Copy package.json and install dependencies
+COPY package*.json ./
+RUN npm install
+
+# Copy source files and build the app
+COPY . .
+RUN npm run build
+
+# Stage 3: Serve with Nginx
+FROM nginx:alpine
+
+# Copy dockerize binary
+COPY --from=dockerize /usr/local/bin/dockerize /usr/local/bin/
+
+# Copy built React app to Nginx web root
+COPY --from=build /app/build /usr/share/nginx/html
+
+# Expose correct port
+EXPOSE 80
+
+# Start Nginx with Dockerize waiting for backend services
+ENTRYPOINT ["dockerize", "-wait", "tcp://backend:5000", "-wait", "tcp://db:27017", "-timeout", "60s", "nginx", "-g", "daemon off;"]
