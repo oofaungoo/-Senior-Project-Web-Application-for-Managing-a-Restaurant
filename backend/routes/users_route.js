@@ -12,7 +12,7 @@ const verifyToken = (req, res, next) => {
     if (!token) return res.status(401).json({ error: "Access Denied" });
 
     try {
-        const verified = jwt.verify(token, process.env.JWT_SECRET);
+        const verified = jwt.verify(token, process.env.JWT_SECRET || 'd4f67a91e8c3b5a4f2e6d1c8b7a9e3f5');
         req.user = verified;
         next();
     } catch (err) {
@@ -194,7 +194,7 @@ router.post('/login', async (req, res) => {
         // 🔹 สร้าง token
         const token = jwt.sign(
             { id: user._id, name: user.name, role_id: user.role_id },
-            process.env.JWT_SECRET || 'default_secret',
+            process.env.JWT_SECRET || 'd4f67a91e8c3b5a4f2e6d1c8b7a9e3f5',
             { expiresIn: "12h" }
         );
 
