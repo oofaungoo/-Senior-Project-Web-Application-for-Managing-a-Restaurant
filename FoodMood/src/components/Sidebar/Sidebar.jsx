@@ -14,38 +14,64 @@ import NotificationsActiveRoundedIcon from '@mui/icons-material/NotificationsAct
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import AutoGraphIcon from '@mui/icons-material/AutoGraph';
 import { jwtDecode } from "jwt-decode";
+import axios from 'axios';
 
-const Sidebar = ({ unreadNotifications }) => {
+const Sidebar = () => {
     const isSmallScreen = useMediaQuery('(max-width: 768px)'); // For mobile user
     const location = useLocation();
     const navigate = useNavigate();
     const [roleId, setRoleId] = useState('');
-    
+
     const [isDrawerOpen, setIsDrawerOpen] = useState(!isSmallScreen); // For computer & tablet user
     const [isCollapsed, setIsCollapsed] = useState(false); // ควบคุมการย่อ/ขยายของ sidebar
     const [activeMenu, setActiveMenu] = useState('');
 
+    const [notifications, setNotifications] = useState();
+    const [unreadNotifications, setUnreadNotifications] = useState();
+    const [lowStockItems, setLowStockItems] = useState();
+
     // API
     useEffect(() => {
-            const token = localStorage.getItem("token");
-            if (!token) {
-                Swal.fire({
-                    title: "Sesstion ของคุณหมดอายุ",
-                    text: "กรุณาเข้าสู่ระบบใหม่",
-                    icon: "warning",
-                    confirmButtonColor: "#64A2FF",
-                    confirmButtonText: "OK"
-                }).then(() => {
-                    navigate('/');
-                });
-                return;
-            } else {
-                const decodedToken = jwtDecode(token);
-                setRoleId(decodedToken.role_id); 
-                console.log(roleId)
-            }
+        const token = localStorage.getItem("token");
+        if (!token) {
+            Swal.fire({
+                title: "Sesstion ของคุณหมดอายุ",
+                text: "กรุณาเข้าสู่ระบบใหม่",
+                icon: "warning",
+                confirmButtonColor: "#64A2FF",
+                confirmButtonText: "OK"
+            }).then(() => {
+                navigate('/');
+            });
+            return;
+        } else {
+            const decodedToken = jwtDecode(token);
+            setRoleId(decodedToken.role_id);
+            //console.log(roleId)
         }
-    );
+        axios.get('http://localhost:5000/api/ingredients')
+            .then(res => {
+                const ingredients = res.data;
+
+                const lowStock = ingredients.filter(item => item.remain < item.min);
+
+                setLowStockItems(lowStock);
+                setUnreadNotifications(lowStock.length);
+
+                const notiData = lowStock.map(item => ({
+                    id: item._id,
+                    item: item.name,
+                    remain: item.remain,
+                    min: item.min,
+                    unit: item.unit,
+                    time: new Date().toLocaleString(),
+                    isNew: true,
+                }));
+
+                setNotifications(notiData);
+            })
+            .catch(err => console.error('Error fetching ingredients:', err));
+    }, [unreadNotifications]);
 
     // Auto Funcion: set "isDrawerOpen" for desktop and mobile, respectively.
     useEffect(() => {
@@ -61,19 +87,18 @@ const Sidebar = ({ unreadNotifications }) => {
 
     // Constant Data: menu list for navigate.
     const adminMenu = [
-        { to: '/OrderCreate', label: 'สร้างออเดอร์', icon: <NoteAddRoundedIcon />, roles: ['1','6','7'] },
-        { to: '/OrderCheck', label: 'ออร์เดอร์ปัจจุบัน', icon: <FileCopyRoundedIcon />, roles: ['1','2','6','7'] },
-        { to: '/OrderHistory', label: 'ประวัติออเดอร์', icon: <FindInPageRoundedIcon />, roles: ['1','2','3','4','5','6','7'] },        
-        { to: '/IngredientManagement', label: 'จัดการวัตถุดิบ', icon: <InboxRoundedIcon />, roles: ['1','2','6','7'] },
+        { to: '/OrderCreate', label: 'สร้างออเดอร์', icon: <NoteAddRoundedIcon />, roles: ['1', '6', '7'] },
+        { to: '/OrderCheck', label: 'ออร์เดอร์ปัจจุบัน', icon: <FileCopyRoundedIcon />, roles: ['1', '2', '6', '7'] },
+        { to: '/OrderHistory', label: 'ประวัติออเดอร์', icon: <FindInPageRoundedIcon />, roles: ['1', '2', '3', '4', '5', '6', '7'] },
+        { to: '/IngredientManagement', label: 'จัดการวัตถุดิบ', icon: <InboxRoundedIcon />, roles: ['1', '2', '6', '7'] },
         { to: '/MenuManager', label: 'จัดการเมนูอาหาร', icon: <FastfoodRoundedIcon />, roles: ['1'] },
         { to: '/UserManager', label: 'จัดการผู้ใช้', icon: <PeopleAltRoundedIcon />, roles: ['1'] },
         { to: '/Dashboard', label: 'Dashboard', icon: <AutoGraphIcon />, roles: ['1'] },
         {
             to: '/Noti',
             label: 'การแจ้งเตือน',
-            icon: <NotificationsActiveRoundedIcon />,
-            badge: unreadNotifications,
-            roles: ['1','2','3','4','5','6','7']
+            icon: <Badge badgeContent={unreadNotifications} color="error"><NotificationsActiveRoundedIcon /></Badge>,
+            roles: ['1', '2', '3', '4', '5', '6', '7']
         }
     ];
 
@@ -150,46 +175,46 @@ const Sidebar = ({ unreadNotifications }) => {
                     {/* Navigator menu */}
                     <ul>
                         {adminMenu
-                        .filter(item => item.roles.includes(roleId))
-                        .map((item) => (
-                            <Link to={item.to} key={item.label}>
-                                <li
-                                    style={{
-                                        display: 'flex',
-                                        width: "100%",
-                                        alignItems: 'center',
-                                        padding: '10px 16px',
-                                        marginBottom: '10px',
-                                        borderRadius: '26px',
-                                        backgroundColor: activeMenu === item.label ? '#64A2FF' : 'transparent',
-                                        color: activeMenu === item.label ? '#fff' : '#777777',
-                                        cursor: 'pointer',
-                                        transition: 'background-color 0.3s, color 0.3s',
-                                    }}
-                                    onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#e0e7ff'; e.currentTarget.style.color = '#007bff'; }}
-                                    onMouseLeave={(e) => {
-                                        e.currentTarget.style.backgroundColor = activeMenu === item.label ? '#64A2FF' : 'transparent';
-                                        e.currentTarget.style.color = activeMenu === item.label ? '#fff' : '#777777';
-                                    }}
-                                    onClick={() => setActiveMenu(item.label)}
-                                >
-                                    {item.icon}
-                                    <span
+                            .filter(item => item.roles.includes(roleId))
+                            .map((item) => (
+                                <Link to={item.to} key={item.label}>
+                                    <li
                                         style={{
-                                            marginLeft: 10,
-                                            maxWidth: isSmallScreen || !isCollapsed ? 120 : 0,  // ✅ แสดงเสมอในโหมดมือถือ
-                                            overflow: 'hidden',
-                                            whiteSpace: 'nowrap',
-                                            opacity: isSmallScreen || !isCollapsed ? 1 : 0,  // ✅ ไม่จางหายในมือถือ
-                                            transition: 'max-width 0.3s, opacity 0.3s',
+                                            display: 'flex',
+                                            width: "100%",
+                                            alignItems: 'center',
+                                            padding: '10px 16px',
+                                            marginBottom: '10px',
+                                            borderRadius: '26px',
+                                            backgroundColor: activeMenu === item.label ? '#64A2FF' : 'transparent',
+                                            color: activeMenu === item.label ? '#fff' : '#777777',
+                                            cursor: 'pointer',
+                                            transition: 'background-color 0.3s, color 0.3s',
                                         }}
+                                        onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#e0e7ff'; e.currentTarget.style.color = '#007bff'; }}
+                                        onMouseLeave={(e) => {
+                                            e.currentTarget.style.backgroundColor = activeMenu === item.label ? '#64A2FF' : 'transparent';
+                                            e.currentTarget.style.color = activeMenu === item.label ? '#fff' : '#777777';
+                                        }}
+                                        onClick={() => setActiveMenu(item.label)}
                                     >
-                                        {item.label}
-                                    </span>
-                                </li>
+                                        {item.icon}
+                                        <span
+                                            style={{
+                                                marginLeft: 10,
+                                                maxWidth: isSmallScreen || !isCollapsed ? 120 : 0,  // ✅ แสดงเสมอในโหมดมือถือ
+                                                overflow: 'hidden',
+                                                whiteSpace: 'nowrap',
+                                                opacity: isSmallScreen || !isCollapsed ? 1 : 0,  // ✅ ไม่จางหายในมือถือ
+                                                transition: 'max-width 0.3s, opacity 0.3s',
+                                            }}
+                                        >
+                                            {item.label}
+                                        </span>
+                                    </li>
 
-                            </Link>
-                        ))}
+                                </Link>
+                            ))}
                     </ul>
 
                     {/* Logout button */}

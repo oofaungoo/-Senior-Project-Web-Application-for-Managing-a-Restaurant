@@ -18,18 +18,18 @@ app.use(express.json()); // อ่านข้อมูลแบบ json
 
 // Connect to MongoDB
 // V.1 ใช้กับตอนไม่เป็น Docker
-// mongoose.connect("mongodb://127.0.0.1:27017/foodmood", {useNewUrlParser: true,useUnifiedTopology: true,}).then(() => console.log("MongoDB Connected")).catch((err) => console.error("MongoDB Connection Error:", err));
+mongoose.connect("mongodb://127.0.0.1:27017/foodmood", {useNewUrlParser: true,useUnifiedTopology: true,}).then(() => console.log("MongoDB Connected")).catch((err) => console.error("MongoDB Connection Error:", err));
 // V.2 ใช้กับ Docker
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://db:27017/foodmood';
+//const MONGO_URI = process.env.MONGO_URI || 'mongodb://db:27017/foodmood';
 
-mongoose.connect(MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-}).then(() => {
-  console.log('✅ MongoDB connected');
-}).catch(err => {
-  console.error('❌ MongoDB Connection Error:', err);
-});
+//mongoose.connect(MONGO_URI, {
+//  useNewUrlParser: true,
+//  useUnifiedTopology: true
+//}).then(() => {
+//  console.log('✅ MongoDB connected');
+//}).catch(err => {
+//  console.error('❌ MongoDB Connection Error:', err);
+//});
 
 // Routes
 app.get('/api', (req, res) => {

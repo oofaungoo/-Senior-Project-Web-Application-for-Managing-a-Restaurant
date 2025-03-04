@@ -5,10 +5,14 @@ import { useNavigate } from 'react-router-dom';
 import Swal from "sweetalert2";
 
 
-const Noti = ({ setUnreadNotifications = () => { }, setLowStockItems = () => { } }) => {
+const Noti = () => {
     const navigate = useNavigate();
 
+    const [foods, setFoods] = useState([]);
+
     const [notifications, setNotifications] = useState([]);
+    const [unreadNotifications, setUnreadNotifications] = useState();
+    const [lowStockItems, setLowStockItems] = useState();
 
     useEffect(() => {
         const token = localStorage.getItem("token");
@@ -17,7 +21,9 @@ const Noti = ({ setUnreadNotifications = () => { }, setLowStockItems = () => { }
                 .then(() => { navigate('/'); });
             return;
         }
-        
+        axios.get('http://localhost:5000/api/foods')
+            .then(res => setFoods(res.data))
+            .catch(err => console.error('Error fetching foods:', err));
         axios.get('http://localhost:5000/api/ingredients')
             .then(res => {
                 const ingredients = res.data;
@@ -42,11 +48,6 @@ const Noti = ({ setUnreadNotifications = () => { }, setLowStockItems = () => { }
             .catch(err => console.error('Error fetching ingredients:', err));
     }, [setUnreadNotifications, setLowStockItems]);
 
-    const clearNotifications = () => {
-        setNotifications([]);
-        setUnreadNotifications(0);
-    };
-
     return (
         <Box
             sx={{
@@ -63,12 +64,7 @@ const Noti = ({ setUnreadNotifications = () => { }, setLowStockItems = () => { }
             }}
         >
             <Stack direction="row" justifyContent="space-between" alignItems="center">
-                <Typography variant="h6" fontWeight="bold">🔔 การแจ้งเตือน</Typography>
-                {notifications.length > 0 && (
-                    <Button variant="contained" color="error" onClick={clearNotifications}>
-                        ล้างแจ้งเตือน
-                    </Button>
-                )}
+                <p style={{ fontSize: 24 }}>🔔 การแจ้งเตือน</p>
             </Stack>
 
             {notifications.length > 0 ? (
@@ -77,16 +73,23 @@ const Noti = ({ setUnreadNotifications = () => { }, setLowStockItems = () => { }
                         <Card key={noti.id} sx={{ borderLeft: "5px solid red", boxShadow: 3 }}>
                             <CardContent>
                                 <Stack direction="row" justifyContent="space-between" alignItems="center">
-                                    <Typography variant="subtitle1" fontWeight="bold">{noti.item}</Typography>
+                                    <p style={{ fontWeight: 600, fontSize: 24, lineHeight: 2 }}>{noti.item}</p>
                                     {noti.isNew && <Chip label="New" color="error" size="small" />}
                                 </Stack>
                                 <Typography variant="body2" color="text.secondary">
-                                    วัตถุดิบ <strong>{noti.item}</strong> เหลือเพียง
-                                    <strong style={{ color: "red" }}> {noti.remain} {noti.unit}</strong>
-                                    จากจำนวนขั้นต่ำ <strong style={{ color: "red" }}>{noti.min} {noti.unit}</strong>
+                                    <p style={{ fontSize: 20, lineHeight: 2 }}>
+                                        วัตถุดิบ <strong>&nbsp;{noti.item}&nbsp;</strong> เหลือเพียง
+                                        <strong style={{ color: "red" }}> &nbsp;{noti.remain} {noti.unit}&nbsp;</strong>
+                                        จากจำนวนขั้นต่ำ <strong style={{ color: "red" }}>&nbsp;{noti.min} {noti.unit}&nbsp;</strong>
+                                    </p>
+                                </Typography>
+                                <Typography variant="body2" color="text.secondary">
+                                    <p style={{ fontSize: 20, lineHeight: 2 }}>
+                                        อาจส่งผลต่อเมนู
+                                    </p>
                                 </Typography>
                                 <Typography variant="caption" color="text.secondary">
-                                    📅 {noti.time}
+                                    <p style={{ fontSize: 18, lineHeight: 2 }}>📅 {noti.time}</p>
                                 </Typography>
                             </CardContent>
                         </Card>

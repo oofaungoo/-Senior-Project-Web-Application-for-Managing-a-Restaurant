@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const orderSchema = new mongoose.Schema({
     orderNumber: {
         type: Number,
-        default: 0 // ค่าเริ่มต้นเป็น 1 แทน ''
+        default: 0
     },
     employeeName: {
         type: String,

@@ -45,12 +45,10 @@ const IngredientManager = () => {
     // API: 1.Edit 2.Add
     const handleSaveData = (updatedData) => {
         if (isEditing) {
-            console.log('วัตถุดิบ (อัปเดต):', dataToEdit._id);
             axios.put(`http://localhost:5000/api/ingredients/${dataToEdit._id}`, updatedData)
                 .then(res => { setData(data.map(user => (user._id === res.data._id ? res.data : user))); })
                 .catch(err => console.error('Failed to update user:', err));
         } else {
-            console.log('วัตถุดิบ (ใหม่):', updatedData);
             axios.post('http://localhost:5000/api/ingredients', updatedData)
                 .then(res => {
                     setData(prev => [...prev, res.data]);
