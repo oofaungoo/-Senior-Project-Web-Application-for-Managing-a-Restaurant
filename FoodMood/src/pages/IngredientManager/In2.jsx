@@ -154,11 +154,14 @@ const IngredientManager = () => {
                     <Grid item xs={4} lg={4}>
                         <select className="category-filter" onChange={handleCategoryFilter} value={categoryFilter} style={{ marginTop: "10px" }}>
                             <option value="">ทั้งหมด</option>
-                            <option value="เนื้อสัตว์">เนื้อสัตว์</option>
-                            <option value="ผัก">ผัก</option>
+                            <option value="เนื้อหมู">เนื้อหมู</option>
+                            <option value="เนื้อไก่">เนื้อไก่</option>
+                            <option value="ปลา">ปลา</option>
                             <option value="ทะเล">ทะเล</option>
-                            <option value="เครื่องดื่ม">เครื่องดื่ม</option>
+                            <option value="ผัก">ผัก</option>
                             <option value="ผลไม้">ผลไม้</option>
+                            <option value="เครื่องดื่ม">เครื่องดื่ม</option>
+                            <option value="อาหารสำเร็จรูป">อาหารสำเร็จรูป</option>
                         </select>
                     </Grid>
 
@@ -169,7 +172,7 @@ const IngredientManager = () => {
                     </Grid>
                 </Grid>
 
-                <IngredientTable data={data} paginatedIngredients={paginatedIngredients} totalPages={totalPages} onEdit={handleEditData} handleClickConfirm={handleClickConfirm} />
+                <IngredientTable data={filteredIngredients} paginatedIngredients={paginatedIngredients} totalPages={totalPages} onEdit={handleEditData} handleClickConfirm={handleClickConfirm} />
             </Box>
 
             {/* Desktop & Tablet: แสดง AddMenu และ MenuItemDetail ด้านขวา */}

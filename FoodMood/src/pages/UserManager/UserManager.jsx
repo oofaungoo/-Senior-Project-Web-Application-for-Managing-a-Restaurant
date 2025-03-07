@@ -106,8 +106,8 @@ const UserManager = () => {
     };
 
     const filteredData = data.filter(user => 
-        user.name.includes(searchQuery)
-    );
+        user.name && user.name.includes(searchQuery)
+    );    
 
     return (
         <>

@@ -12,8 +12,8 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 const AddNewMenu = ({ form, dataToEdit, onCancel, setShowItemDetail }) => {
     const [menuName, setMenuName] = useState('');
-    const [category_id, setCategory_id] = useState('1');
-    const [category, setCategory] = useState('1');
+    const [category_id, setCategory_id] = useState('67c1a7e7f420733881374025');
+    const [category, setCategory] = useState('');
     const [sizePrices, setSizePrices] = useState([]);
     const [newSize, setNewSize] = useState('ปกติ');
     const [newSizePrice, setNewSizePrice] = useState('');
@@ -157,11 +157,11 @@ const AddNewMenu = ({ form, dataToEdit, onCancel, setShowItemDetail }) => {
                 <div style="display: grid; gap: 10px; text-align: left;">
                     <div>
                         <label style="font-size: 18px;">ชื่อหมวดหมู่:</label>
-                        <input class="swal2-input" style="width: 100%; margin: 0;" value="${customOptions[index].label}" placeholder="เช่น ระดับความหวาน" />
+                        <input id="swal-input-label" class="swal2-input" style="width: 100%; margin: 0;" value="${customOptions[index].label}" placeholder="เช่น ระดับความหวาน" />
                     </div>
                     <div>
                         <label">ตัวเลือก:</label>
-                        <input class="swal2-input" style="width: 100%; margin: 0;" value="${customOptions[index].options.join(', ')}" placeholder="เช่น 0, 25, 50 (กรุณาระบุเครื่องหมาย , ด้วย)" />
+                        <input id="swal-input-options" class="swal2-input" style="width: 100%; margin: 0;" value="${customOptions[index].options.join(', ')}" placeholder="เช่น 0, 25, 50 (กรุณาระบุเครื่องหมาย , ด้วย)" />
                     </div>
                 </div>
             `,
@@ -170,23 +170,30 @@ const AddNewMenu = ({ form, dataToEdit, onCancel, setShowItemDetail }) => {
             cancelButtonColor: "#B2B2B2",
             confirmButtonText: 'บันทึก',
             cancelButtonText: 'ยกเลิก',
-        }).then((result) => {
-            if (result.isConfirmed) {
-                const editedLabel = document.getElementById('swal-input-label').value;
-                const editedOptions = document.getElementById('swal-input-options').value;
-
-                if (editedLabel && editedOptions) {
-                    const updatedOptions = customOptions.map((item, i) =>
-                        i === index
-                            ? { ...item, label: editedLabel, options: editedOptions.split(',').map(opt => opt.trim()) }
-                            : item
-                    );
-                    setCustomOptions(updatedOptions);
-                } else {
-                    Swal.fire("กรุณาระบุ ชื่อหมวดหมู่ และ ตัวเลือก ให้เรียบร้อย!", '', 'error');
+            preConfirm: () => {
+                const editedLabel = document.getElementById('swal-input-label')?.value;
+                const editedOptions = document.getElementById('swal-input-options')?.value;
+        
+                if (!editedLabel || !editedOptions) {
+                    Swal.showValidationMessage("กรุณาระบุ ชื่อหมวดหมู่ และ ตัวเลือก ให้เรียบร้อย!");
+                    return false;
                 }
+        
+                return { editedLabel, editedOptions };
+            }
+        }).then((result) => {
+            if (result.isConfirmed && result.value) {
+                const { editedLabel, editedOptions } = result.value;
+        
+                const updatedOptions = customOptions.map((item, i) =>
+                    i === index
+                        ? { ...item, label: editedLabel, options: editedOptions.split(',').map(opt => opt.trim()) }
+                        : item
+                );
+                setCustomOptions(updatedOptions);
             }
         });
+        
     };
 
     const handleDeleteOption = (index) => {

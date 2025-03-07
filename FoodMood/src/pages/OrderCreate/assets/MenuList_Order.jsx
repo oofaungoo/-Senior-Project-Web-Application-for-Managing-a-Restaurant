@@ -13,6 +13,9 @@ const MenuList_Order = ({ data, category, onMenuClick }) => {
         return matchesCategory && matchesSearch;
     });
 
+    // เรียงตาม category
+    const sortedMenuItems = [...filteredMenuItems].sort((a, b) => a.category.localeCompare(b._id));
+
     return (
         <>
             <Grid container>
@@ -35,7 +38,7 @@ const MenuList_Order = ({ data, category, onMenuClick }) => {
 
             <Grid container spacing={1}>
                 {/* รายการเมนู */}
-                {filteredMenuItems.map((item) => (
+                {sortedMenuItems.map((item) => (
                     <Grid item xs={6} md={4} lg={2} key={item._id} height={200} onClick={() => onMenuClick(item)}>
                         <Paper elevation={2} style={{ height: "100%", display: "flex", flexDirection: "column" }}>
                             <Button style={{ height: "100%", padding: 0, margin: 0, display: "flex", flexDirection: "column" }}>

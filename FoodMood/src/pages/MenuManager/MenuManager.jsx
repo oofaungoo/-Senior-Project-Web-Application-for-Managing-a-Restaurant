@@ -94,7 +94,6 @@ const MenuManager = () => {
 
     // Function: Add new data
     const handleAddNewData = () => {
-        console.log('เพิ่มรายการอาหารใหม่');
         setDataToEdit({ name: '', category_id: null, category: '', sizePrices: [], customOptions: [] });
         setIsEditing(false); // เปลี่ยนโหมดเป็น Add
         setShowEditData(true);

@@ -31,7 +31,7 @@ const AddIngredient = ({ data, onClose, onSave, isEditing }) => {
         setEditedData({
             name: data.name,
             group: data.group,
-            unit: 'kg',
+            unit: data.unit || 'kg',
             remain: data.remain,
             min: data.min,
         });
@@ -47,7 +47,7 @@ const AddIngredient = ({ data, onClose, onSave, isEditing }) => {
     };
 
     return (
-        <>  
+        <>
             {/* Header */}
             <Grid sx={{ borderBottom: "1px solid #ddd", marginBottom: "8px", paddingBottom: "8px" }}>
                 <p style={{ fontSize: 18, fontWeight: 500, justifyContent: "center" }}>{isEditing ? "แก้ไขวัตถุดิบ" : "เพิ่มวัตถุดิบใหม่"}</p>
@@ -62,19 +62,23 @@ const AddIngredient = ({ data, onClose, onSave, isEditing }) => {
                 <label>หมวดหมู่</label>
                 <select id="group" value={editedData.group || ''} onChange={handleChange}>
                     <option value="">-- เลือกหมวดหมู่ --</option>
-                    <option value="เนื้อสัตว์">เนื้อสัตว์</option>
-                    <option value="ผัก">ผัก</option>
+                    <option value="เนื้อหมู">เนื้อหมู</option>
+                    <option value="เนื้อไก่">เนื้อไก่</option>
+                    <option value="ปลา">ปลา</option>
                     <option value="ทะเล">ทะเล</option>
-                    <option value="เครื่องดื่ม">เครื่องดื่ม</option>
+                    <option value="ผัก">ผัก</option>
                     <option value="ผลไม้">ผลไม้</option>
+                    <option value="เครื่องดื่ม">เครื่องดื่ม</option>
+                    <option value="อาหารสำเร็จรูป">อาหารสำเร็จรูป</option>
                 </select>
             </Grid>
 
             <Grid container sx={{ display: "flex", alignItems: "center", marginBottom: "8px", paddingBottom: "8px", borderBottom: "1px solid #ddd" }}>
                 <label>หน่วยวัตถุดิบ</label>
-                <select id="unit" value={editedData.unit} onChange={handleChange}>
+                <select id="unit" value={editedData.unit || 'kg'} onChange={handleChange}>
                     <option value="kg">กิโลกรัม</option>
                     <option value="g">กรัม</option>
+                    <option value="ขีด">ขีด</option>
                 </select>
             </Grid>
 

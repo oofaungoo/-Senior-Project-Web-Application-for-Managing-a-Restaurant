@@ -47,7 +47,7 @@ const Sidebar = () => {
         } else {
             const decodedToken = jwtDecode(token);
             setRoleId(decodedToken.role_id);
-            //console.log(roleId)
+            console.log(roleId)
         }
         axios.get('http://localhost:5000/api/ingredients')
             .then(res => {
@@ -87,18 +87,18 @@ const Sidebar = () => {
 
     // Constant Data: menu list for navigate.
     const adminMenu = [
-        { to: '/OrderCreate', label: 'สร้างออเดอร์', icon: <NoteAddRoundedIcon />, roles: ['1', '6', '7'] },
-        { to: '/OrderCheck', label: 'ออร์เดอร์ปัจจุบัน', icon: <FileCopyRoundedIcon />, roles: ['1', '2', '6', '7'] },
-        { to: '/OrderHistory', label: 'ประวัติออเดอร์', icon: <FindInPageRoundedIcon />, roles: ['1', '2', '3', '4', '5', '6', '7'] },
-        { to: '/IngredientManagement', label: 'จัดการวัตถุดิบ', icon: <InboxRoundedIcon />, roles: ['1', '2', '6', '7'] },
-        { to: '/MenuManager', label: 'จัดการเมนูอาหาร', icon: <FastfoodRoundedIcon />, roles: ['1'] },
+        { to: '/OrderCreate', label: 'สร้างออเดอร์', icon: <NoteAddRoundedIcon />, roles: ['0','1', '6', '7'] },
+        { to: '/OrderCheck', label: 'ออร์เดอร์ปัจจุบัน', icon: <FileCopyRoundedIcon />, roles: ['0','1', '2', '6', '7'] },
+        { to: '/OrderHistory', label: 'ประวัติออเดอร์', icon: <FindInPageRoundedIcon />, roles: ['0','1', '2', '3', '4', '5', '6', '7'] },
+        { to: '/IngredientManagement', label: 'จัดการวัตถุดิบ', icon: <InboxRoundedIcon />, roles: ['0','1', '2', '6', '7'] },
+        { to: '/MenuManager', label: 'จัดการเมนูอาหาร', icon: <FastfoodRoundedIcon />, roles: ['0','1'] },
         { to: '/UserManager', label: 'จัดการผู้ใช้', icon: <PeopleAltRoundedIcon />, roles: ['1'] },
-        { to: '/Dashboard', label: 'Dashboard', icon: <AutoGraphIcon />, roles: ['1'] },
+        { to: '/Dashboard', label: 'Dashboard', icon: <AutoGraphIcon />, roles: ['0','1'] },
         {
             to: '/Noti',
             label: 'การแจ้งเตือน',
             icon: <Badge badgeContent={unreadNotifications} color="error"><NotificationsActiveRoundedIcon /></Badge>,
-            roles: ['1', '2', '3', '4', '5', '6', '7']
+            roles: ['0','1', '2', '3', '4', '5', '6', '7']
         }
     ];
 

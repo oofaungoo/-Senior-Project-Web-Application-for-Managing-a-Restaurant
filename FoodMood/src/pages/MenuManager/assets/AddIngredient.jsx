@@ -55,7 +55,7 @@ const AddIngredient = ({
         const updatedIngredients = [...ingredients];
         if (field == "newIngredient") {
             const targetIngredient = propIngredientOptions.find(option => option.name === value);
-            console.log('targetIngredient:', targetIngredient);
+           // console.log('targetIngredient:', targetIngredient);
             updatedIngredients[index][field] = value;
             updatedIngredients[index]["unit"] = targetIngredient.unit;
 
@@ -65,6 +65,7 @@ const AddIngredient = ({
 
         setIngredients(updatedIngredients);
     };
+    
 
     const handleSave = () => {
         console.log("ราคาใหม่:", editedPrice);
@@ -152,6 +153,7 @@ const AddIngredient = ({
                                 <select value={ingredient.unit} disabled style={{ width: "100%" }}>
                                     <option value="kg">กิโลกรัม</option>
                                     <option value="g">กรัม</option>
+                                    <option value="ขีด">ขีด</option>
                                 </select>
                             </Grid>
                         </Grid>

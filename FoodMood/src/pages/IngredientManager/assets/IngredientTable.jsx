@@ -22,7 +22,7 @@ const IngredientTable = ({ data = [], onEdit, handleClickConfirm }) => {
         }
     ];
     return (
-        <div style={{ height: '83%', width: '100%' }}>
+        <div style={{ height: '85%', width: '100%' }}>
             <DataGrid
                 getRowId={(row) => row._id}     //เชื่อมกับ id ใน database ของเรา แต่ id ใน database เป็น _id
                 rows={data}

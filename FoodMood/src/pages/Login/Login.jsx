@@ -27,7 +27,7 @@ const Login = () => {
                 username: isAdminMode ? username : 'employee',
                 password
             };
-
+            console.log("Frontend login data:", body);
             const res = await axios.post('http://localhost:5000/api/users/login', body);
 
             console.log(res)
@@ -118,6 +118,7 @@ const Login = () => {
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 margin="normal"
+                                inputProps={{ maxLength: 6 }}
                                 InputProps={{
                                     maxLength: 6,
                                     sx: { fontFamily: 'inherit' },
