@@ -27,10 +27,9 @@ const Login = () => {
                 username: isAdminMode ? username : 'employee',
                 password
             };
-            console.log("Frontend login data:", body);
+            //console.log("Frontend login data:", body);
             const res = await axios.post('http://localhost:5000/api/users/login', body);
 
-            console.log(res)
             setToken(res.data.token);
             localStorage.setItem("token", res.data.token);
 
@@ -41,7 +40,7 @@ const Login = () => {
             }
         
         } catch (error) {
-            console.error('Login Error:', error);
+            console.error('พบปัญหาในการเข้าสู่ระบบ:', error);
 
             if (error.response) {
                 const { status, data } = error.response;
@@ -68,7 +67,7 @@ const Login = () => {
                         <Button variant={isAdminMode ? "contained" : "outlined"} startIcon={<KeyIcon />} onClick={() => setIsAdminMode(true)}
                             sx={{ mx: 1, fontSize: 18, fontWeight: 400, fontFamily: "inherit", borderRadius: 8, backgroundColor: isAdminMode ? '#64A2FF' : 'transparent', color: isAdminMode ? '#fff' : '#64A2FF', borderColor: '#64A2FF', '&:hover': { backgroundColor: '#4F91E3', color: "#fff" } }}
                         >
-                            แอดมิน
+                            เจ้าของร้าน
                         </Button>
                         <Button variant={!isAdminMode ? "contained" : "outlined"} endIcon={<PersonIcon />} onClick={() => setIsAdminMode(false)}
                             sx={{ mx: 1, fontSize: 18, fontWeight: 400, fontFamily: "inherit", borderRadius: 8, backgroundColor: !isAdminMode ? '#64A2FF' : 'transparent', color: !isAdminMode ? '#fff' : '#64A2FF', borderColor: '#64A2FF', '&:hover': { backgroundColor: '#4F91E3', color: "#fff" } }}
@@ -117,7 +116,6 @@ const Login = () => {
                                 variant="outlined"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
-                                margin="normal"
                                 inputProps={{ maxLength: 6 }}
                                 InputProps={{
                                     maxLength: 6,
@@ -136,7 +134,6 @@ const Login = () => {
                         <Button
                             fullWidth
                             variant="contained"
-                            color="primary"
                             sx={{ mt: 2, fontSize: 18, fontFamily: "inherit", borderRadius: 8, boxShadow: "none", backgroundColor: '#62c965', '&:hover': { backgroundColor: '#3b913e', boxShadow: "none" } }}
                             type="submit"
                         >

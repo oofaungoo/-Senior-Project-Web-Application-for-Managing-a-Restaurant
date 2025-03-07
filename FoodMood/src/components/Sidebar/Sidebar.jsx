@@ -47,7 +47,6 @@ const Sidebar = () => {
         } else {
             const decodedToken = jwtDecode(token);
             setRoleId(decodedToken.role_id);
-            console.log(roleId)
         }
         axios.get('http://localhost:5000/api/ingredients')
             .then(res => {

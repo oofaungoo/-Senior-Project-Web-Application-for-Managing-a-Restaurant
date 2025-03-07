@@ -175,35 +175,38 @@ router.post('/login', async (req, res) => {
         const { username, password } = req.body;
 
         if (!username || !password) {
-            return res.status(400).json({ message: 'Username and password are required' });
+            return res.status(400).json({ message: 'กรุณาระบุข้อมูลให้ครบถ้วนเพื่อเข้าสู่ระบบ' });
         }
 
-        // 🔹 ค้นหา user ก่อน
-        let user = await User.findOne({ username });
-
-        if (!user) {
+        // 🔹 ค้นหาผู้ใช้ที่มี username เดียวกัน
+        let users = await User.find({ username });
+        
+        if (users.length === 0) {
             return res.status(401).json({ message: 'Invalid username or password' });
         }
 
-        // 🔹 ตรวจสอบรหัสผ่าน
-        const isMatch = await bcrypt.compare(password, user.password);
-        if (!isMatch) {
-            return res.status(401).json({ message: 'Invalid username or password (Wrong password)' });
+        // 🔹 วนลูปตรวจสอบรหัสผ่าน
+        for (let user of users) {
+            const isMatch = await bcrypt.compare(password, user.password);
+            if (isMatch) {
+                // 🔹 สร้าง token
+                const token = jwt.sign(
+                    { id: user._id, name: user.name, role_id: user.role_id },
+                    process.env.JWT_SECRET || 'd4f67a91e8c3b5a4f2e6d1c8b7a9e3f5',
+                    { expiresIn: "12h" }
+                );
+
+                // 🔹 ส่งข้อมูลกลับ
+                return res.status(200).json({
+                    username: user.username,
+                    role_id: user.role_id,
+                    token: token
+                });
+            }
         }
 
-        // 🔹 สร้าง token
-        const token = jwt.sign(
-            { id: user._id, name: user.name, role_id: user.role_id },
-            process.env.JWT_SECRET || 'd4f67a91e8c3b5a4f2e6d1c8b7a9e3f5',
-            { expiresIn: "12h" }
-        );
-
-        // 🔹 ส่งข้อมูลกลับ
-        res.status(200).json({
-            username: user.username,
-            role_id: user.role_id,
-            token: token
-        });
+        // ถ้าไม่พบรหัสผ่านที่ตรงกับผู้ใช้ใดๆ
+        return res.status(401).json({ message: 'Invalid username or password (Wrong password)' });
 
     } catch (error) {
         res.status(500).json({ message: error.message });
