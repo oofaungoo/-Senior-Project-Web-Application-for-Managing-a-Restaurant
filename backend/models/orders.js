@@ -9,6 +9,10 @@ const orderSchema = new mongoose.Schema({
         type: String,
         default: ''
     },
+    paidType: {
+        type: String,
+        default: ''
+    },
     orderDate: {
         type: String,
         default: ''

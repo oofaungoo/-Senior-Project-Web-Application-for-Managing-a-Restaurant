@@ -9,6 +9,7 @@ import './OrderCreate.css';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 import { jwtDecode } from "jwt-decode";
+import QR_img from "../../images/qr_code.png"
 
 const OrderCreate = () => {
     const isMobile = useMediaQuery("(max-width: 767px)");
@@ -48,7 +49,7 @@ const OrderCreate = () => {
             return;
         } else {
             const decodedToken = jwtDecode(token);
-            setStaffName(decodedToken.name); 
+            setStaffName(decodedToken.name);
         }
 
         axios.get('http://localhost:5000/api/foods')
@@ -67,7 +68,6 @@ const OrderCreate = () => {
 
     //API: Add New Order
     const handleSaveData = async (orderData) => {
-        // ตรวจสอบว่ามีเมนูในตะกร้าหรือไม่
         if (!orderData?.items || orderData.items.length === 0) {
             Swal.fire({
                 icon: "warning",
@@ -79,8 +79,7 @@ const OrderCreate = () => {
             return;
         }
 
-        // ตรวจสอบว่าเลือกตัวเลือกการรับประทานหรือยัง
-        if (!orderData?.orderType || orderData.orderType === "ยังไม่ระบุ") {
+        if (orderData.orderType === "ยังไม่ระบุ") {
             Swal.fire({
                 icon: "warning",
                 title: "กรุณาเลือกตัวเลือกการรับประทาน",
@@ -91,7 +90,18 @@ const OrderCreate = () => {
             return;
         }
 
-        // ตรวจสอบว่ากรอกเบอร์โทรหรือเลขโต๊ะหรือยัง
+        if (orderData.paidType === "ยังไม่ระบุ") {
+            Swal.fire({
+                icon: "warning",
+                title: "กรุณาระบุวิธีการจ่ายเงิน",
+                confirmButtonColor: "#64A2FF",
+                confirmButtonText: "ตกลง"
+            });
+            return;
+        }
+
+        console.log(orderData);
+
         const contactInfo = orderData?.contactInfo || {};
         const hasPhoneNumber = contactInfo.phoneNumber && contactInfo.phoneNumber.trim() !== "";
         const hasTableNumber = contactInfo.tableNumber && contactInfo.tableNumber.trim() !== "";
@@ -104,6 +114,35 @@ const OrderCreate = () => {
                 confirmButtonColor: "#64A2FF",
                 confirmButtonText: "ตกลง"
             });
+            return;
+        }
+
+        // แสดงหน้าจอยืนยันก่อนบันทึก
+        let confirmSwalConfig = {
+            title: "กรุณายืนยันการชำระเงิน",
+            html: `
+                <p>ยอดที่ต้องชำระ:&nbsp; <strong style="color: #ff7878;">${orderData.total} บาท</strong></p>
+            `,
+            confirmButtonColor: "#64A2FF",
+            confirmButtonText: "ยืนยัน",
+            showCancelButton: true,
+            cancelButtonText: "ยกเลิก",
+            cancelButtonColor: "#B2B2B2"
+        };
+        
+        if (orderData.paidType === "โอนผ่านธนาคาร") {
+            confirmSwalConfig.html = `
+                <p>ยอดที่ต้องชำระ:&nbsp; <strong style="color: #ff7878;">${orderData.total} บาท</strong></p>
+                <p>กรุณาสแกน QR Code ด้านล่างเพื่อชำระเงิน</p>
+                <div style="display: flex; justify-content: center; margin-top: 10px;">
+                    <img src="${QR_img}" alt="QR Code" style="width: 200px; height: 200px;">
+                </div>
+            `;
+        }
+        
+        const result = await Swal.fire(confirmSwalConfig);
+
+        if (!result.isConfirmed) {
             return;
         }
 
@@ -123,7 +162,7 @@ const OrderCreate = () => {
                 title: "บันทึกออเดอร์สำเร็จ",
                 confirmButtonColor: "#64A2FF",
                 confirmButtonText: "โอเค"
-            })
+            });
 
         } catch (error) {
             Swal.fire({
@@ -135,6 +174,7 @@ const OrderCreate = () => {
             });
         }
     };
+
 
 
     // Function: Handle Menu Click & Set default for every option that exists.

@@ -51,6 +51,7 @@ router.post('/', async (req, res) => {
             orderFinishTime: '',
             orderItems: req.body.items,
             orderType: req.body.orderType,
+            paidType: req.body.paidType,
             contactInfo: req.body.contactInfo,
             orderStatus: 'ยังไม่เริ่ม',
             totalPrice: req.body.total

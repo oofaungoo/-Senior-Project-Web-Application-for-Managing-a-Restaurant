@@ -9,14 +9,15 @@ const OrderHistory_table = ({ data = [], onSelectOrder }) => {
     });
 
     const columns = [
-        { field: 'orderNumber', headerName: 'Order No.' },
-        { field: 'orderDate', headerName: 'วันที่สั่ง' },
-        { field: 'orderTime', headerName: 'เวลาที่สั่ง' },
-        { field: 'orderFinishTime', headerName: 'เวลาที่เสร็จ' },
-        { field: 'totalPrice', headerName: 'ราคา', type: 'number', align: 'left', headerAlign: 'left' },
+        { field: 'orderNumber', headerName: 'Order No.', flex:1 },
+        { field: 'orderDate', headerName: 'วันที่สั่ง', flex:1 },
+        { field: 'orderTime', headerName: 'เวลาที่สั่ง', flex:1 },
+        { field: 'orderFinishTime', headerName: 'เวลาที่เสร็จ', flex:1 },
+        { field: 'totalPrice', headerName: 'ราคา', flex:1, type: 'number', align: 'left', headerAlign: 'left' },
         {
             field: 'orderStatus',
             headerName: 'สถานะออเดอร์',
+           flex:1 , 
             renderCell: (params) => (
                 <span className={params.value === 'เสร็จสิ้น' ? 'text-blue' : params.value === 'ยกเลิก' ? 'text-red' : ''}>
                     {params.value}

@@ -9,6 +9,17 @@ const OrderList = ({ orders, selectOrder }) => {
         "กำลังทำ": "#f7b047",
         "พร้อมเสิร์ฟ": "#4CAF50",
     };
+    const backgroundColors = {
+        "ยังไม่เริ่ม": "",
+        "กำลังทำ": "#fffbf5",
+        "พร้อมเสิร์ฟ": "#f8fdef",
+    };
+    const orderTypeColots = {
+        "ทานที่ร้าน": "#64A2FF",
+        "กลับบ้าน": "#ff7878",
+        "Delivery": "#4CAF50",
+        "สั่งแบบไม่ต้องจ่าย": "#ff63ff",
+    }
 
     return (
         <Grid container spacing={1}>
@@ -31,6 +42,7 @@ const OrderList = ({ orders, selectOrder }) => {
                                     flexDirection: "column",
                                     justifyContent: "space-between",
                                     borderTop: `5px solid ${statusColors[data.orderStatus] || "#000"}`,
+                                    backgroundColor: backgroundColors[data.orderStatus]
                                 }}
                                 onClick={() => selectOrder(data)}
                             >
@@ -49,7 +61,7 @@ const OrderList = ({ orders, selectOrder }) => {
 
                                 {/* โต๊ะ/เบอร์โทร + วันที่ + เวลา */}
                                 <div style={{ textAlign: "center", flex: 1 }}>
-                                    <p style={{ color: "#ff7878", fontWeight: 500, fontSize: 20 }}>{data.orderType}</p>
+                                    <p style={{ color: orderTypeColots[data.orderType], fontWeight: 500, fontSize: 20 }}>{data.orderType}</p>
                                     <p>
                                         {data.contactInfo.tableNumber
                                             ? `โต๊ะที่ ${data.contactInfo.tableNumber}`

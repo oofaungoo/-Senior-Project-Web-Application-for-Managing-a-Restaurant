@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { FaRegTrashAlt } from "react-icons/fa";
 import { Grid, Box } from '@mui/system';
-import Swal from 'sweetalert2';
 
 const CartSummary = ({ cartItems, staffName, totalPrice, handleEditItem, handleRemoveItem, onSave }) => {
-    const [paidOption, setPaidOption] = useState('ยังไม่ระบุ');
+    const [orderType, setOrderType] = useState('ยังไม่ระบุ');
+    const [paidType, setPaidType] = useState('ยังไม่ระบุ');
     const [phoneNumber, setPhoneNumber] = useState('');
     const [tableNumber, setTableNumber] = useState('');
     const [orderNumber, setOrderNumber] = useState(null);
-    const displayedTotalPrice = paidOption === "สั่งแบบไม่ต้องจ่าย" ? 0 : totalPrice;
+    const displayedTotalPrice = orderType === "สั่งแบบไม่ต้องจ่าย" ? 0 : totalPrice;
 
     useEffect(() => {
         const fetchLatestOrderNumber = async () => {
@@ -30,13 +30,17 @@ const CartSummary = ({ cartItems, staffName, totalPrice, handleEditItem, handleR
         fetchLatestOrderNumber();
     }, []);
 
-    const handlePaidOptionChange = (e) => {
-        setPaidOption(e.target.value);
+    const handleOrderTypeChange = (e) => {
+        setOrderType(e.target.value);
         setPhoneNumber('');
         setTableNumber('');
     };
 
-    const isDineIn = paidOption === 'ทานที่ร้าน' || paidOption === 'สั่งแบบไม่ต้องจ่าย';
+    const isDineIn = orderType === 'ทานที่ร้าน' || orderType === 'สั่งแบบไม่ต้องจ่าย';
+
+    const handlePaidTypeChange = (e) => {
+        setPaidType(e.target.value);
+    }
 
     const handleSave = () => {
         const newOrder = {
@@ -44,7 +48,8 @@ const CartSummary = ({ cartItems, staffName, totalPrice, handleEditItem, handleR
             employeeName: staffName,
             items: cartItems,
             total: displayedTotalPrice,
-            orderType: paidOption,
+            orderType: orderType,
+            paidType: paidType,
             contactInfo: isDineIn ? { tableNumber } : { phoneNumber },
         };
         onSave(newOrder);
@@ -88,7 +93,7 @@ const CartSummary = ({ cartItems, staffName, totalPrice, handleEditItem, handleR
 
                             {/* ราคาสินค้าอยู่ขวาสุด */}
                             <Grid item xs={2} sx={{ textAlign: "right", fontSize: "16px", ml: "auto" }}>
-                                {paidOption === "สั่งแบบไม่ต้องจ่าย" ? 0 : item.price * item.quantity}
+                                {orderType === "สั่งแบบไม่ต้องจ่าย" ? 0 : item.price * item.quantity}
                             </Grid>
                         </Grid>
 
@@ -119,16 +124,16 @@ const CartSummary = ({ cartItems, staffName, totalPrice, handleEditItem, handleR
                 </div>
             </Grid>
             <Grid marginTop="auto">
-                <Grid sx={{ marginBottom: "8px", height: "176px", paddingTop: "8px", borderTop: "1px solid #ddd" }}>
+                <Grid sx={{ marginBottom: "8px", paddingTop: "8px", borderTop: "1px solid #ddd" }}>
                     <label>ตัวเลือกการรับอาหาร: </label>
-                    <select value={paidOption} onChange={handlePaidOptionChange}>
+                    <select value={orderType} onChange={handleOrderTypeChange}>
                         <option value="ยังไม่ระบุ">ยังไม่ระบุ</option>
                         <option value="ทานที่ร้าน">🍽️ ทานที่ร้าน</option>
                         <option value="กลับบ้าน">🏠 กลับบ้าน</option>
                         <option value="Delivery">🚚 Delivery</option>
                         <option value="สั่งแบบไม่ต้องจ่าย">🎉 สั่งแบบไม่ต้องจ่าย</option>
                     </select>
-                    {paidOption !== 'ยังไม่ระบุ' && (
+                    {orderType !== 'ยังไม่ระบุ' && (
                         <div style={{ marginTop: "10px" }}>
                             <label>{isDineIn ? "หมายเลขโต๊ะ: " : "เบอร์โทร (หรือชื่อลูกค้า): "}</label>
                             <input
@@ -139,6 +144,12 @@ const CartSummary = ({ cartItems, staffName, totalPrice, handleEditItem, handleR
                             />
                         </div>
                     )}
+                    <label>วิธีการจ่ายเงิน: </label>
+                    <select value={paidType} onChange={handlePaidTypeChange}>
+                        <option value="ยังไม่ระบุ">ยังไม่ระบุ</option>
+                        <option value="เงินสด">💵 เงินสด</option>
+                        <option value="โอนผ่านธนาคาร">🏦 โอนผ่านธนาคาร</option>
+                    </select>
                 </Grid>
 
                 <Grid display="flex" justifyContent="space-between" borderTop="1px solid #ddd" sx={{ paddingTop: "8px", justifyContent: "center", display: "flex" }}>

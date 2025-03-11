@@ -40,7 +40,7 @@ const MenuList = ({ data = [], category = [], onMenuClick, onAddNewMenu, selecte
 
             <Grid container spacing={1}>
                 {/* กล่องเพิ่มเมนูใหม่ */}
-                <Grid item xs={6} md={4} lg={2} height={200} onClick={() => onAddNewMenu()}>
+                <Grid item xs={6} md={4} lg={2} height={218} onClick={() => onAddNewMenu()}>
                     <Paper elevation={2} style={{ height: "100%", display: "flex", justifyContent: "center", alignItems: "center", backgroundColor: "#B2B2B2", }}>
                         <Button style={{ height: "100%", width: "100%", padding: 0, margin: 0, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", }} >
                             <AddIcon style={{ width: "50px", height: "50px", color: "#fff" }} />
@@ -53,7 +53,7 @@ const MenuList = ({ data = [], category = [], onMenuClick, onAddNewMenu, selecte
 
                 {/* รายการเมนู */}
                 {sortedMenuItems.map((item) => (
-                    <Grid item xs={6} md={4} lg={2} key={item._id} height={200} onClick={() => onMenuClick(item)}>
+                    <Grid item xs={6} md={4} lg={2} key={item._id} height={218} onClick={() => onMenuClick(item)}>
                         <Paper elevation={2} style={{ height: "100%", display: "flex", flexDirection: "column" }}>
                             <Button style={{ height: "100%", padding: 0, margin: 0, display: "flex", flexDirection: "column" }}>
                                 <Grid container direction="column" style={{ height: "100%"}}>
@@ -63,7 +63,8 @@ const MenuList = ({ data = [], category = [], onMenuClick, onAddNewMenu, selecte
                                         alt={item.name}
                                     />
                                     <p style={{ fontSize: 18, fontWeight: 4, color: '#000000', textAlign: "left", padding: "0 10px 0" }}>{item.name}</p>
-                                    <p style={{ fontSize: 15, fontWeight: 4, color: '#777777', textAlign: "left", padding: "0 10px 10px" }}>{item.sizePrices.map((size) => size.size).join("/")}</p>
+                                    <p style={{ fontSize: 15, fontWeight: 4, color: '#777777', textAlign: "left", padding: "0 10px 0" }}>{item.sizePrices.map((size) => size.size).join("/")}</p>
+                                    <p style={{ fontSize: 15, fontWeight: 4, color: '#777777', textAlign: "left", padding: "0 10px 10px" }}>{item.sizePrices.map((size) => size.price).join("/")}.-</p>
                                 </Grid>
                             </Button>
                         </Paper>

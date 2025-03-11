@@ -64,6 +64,9 @@ const OrderHistory_detail = ({ selectedOrder, onClose, updateOrder }) => {
                                 : "ไม่ระบุโต๊ะหรือเบอร์โทร"}
                     </p>
                 </Grid>
+                <Grid item xs={12} style={{ display: "flex", justifyContent: "center" }}>
+                    <p style={{ color: "#62c965", fontWeight: 500, fontSize: 20 }}>{selectedOrder.paidType}</p>
+                </Grid>
             </Grid>
 
             <p style={{ fontSize: 18, fontWeight: 500 }}>รายการอาหารที่สั่ง</p>

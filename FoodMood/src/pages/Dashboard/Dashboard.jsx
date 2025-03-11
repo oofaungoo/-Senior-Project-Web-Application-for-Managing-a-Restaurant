@@ -8,6 +8,8 @@ import ListAltIcon from '@mui/icons-material/ListAlt';
 import FastfoodIcon from '@mui/icons-material/Fastfood';
 import CancelIcon from '@mui/icons-material/Cancel';
 import PaidIcon from '@mui/icons-material/Paid';
+import PaymentsIcon from '@mui/icons-material/Payments';
+import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import { PieChart, Pie, Cell, Tooltip, Legend, BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from "recharts";
 
 const Dashboard = () => {
@@ -71,15 +73,32 @@ const Dashboard = () => {
             icon: <FastfoodIcon sx={{ color: "#F3BD17", fontSize: 50 }} />
         },
         {
-            label: "รายได้ประจำวัน",
+            label: "รายได้สุทธิประจำวันวัน",
             value: `${filteredOrders
                 .filter(order => order.orderStatus !== "ยกเลิก") // ตัดออเดอร์ที่ถูกยกเลิกออก
                 .reduce((total, order) => total + order.totalPrice, 0)
                 .toLocaleString()} ฿`,
             bgColor: "#E0F0CA",
             icon: <PaidIcon sx={{ color: "#85BD39", fontSize: 50 }} />
-        }
-
+        },
+        {
+            label: "ยอดเงินสด",
+            value: `${filteredOrders
+                .filter(order => order.orderStatus !== "ยกเลิก" && order.paidType === "เงินสด") // กรองเฉพาะออเดอร์ที่จ่ายเป็นเงินสด
+                .reduce((total, order) => total + order.totalPrice, 0)
+                .toLocaleString()} ฿`,
+            bgColor: "#ebd9ff",
+            icon: <PaymentsIcon sx={{ color: "#ac73ee", fontSize: 50 }} />
+        },
+        {
+            label: "ยอดเงินโอนผ่าน Mobile Banking",
+            value: `${filteredOrders
+                .filter(order => order.orderStatus !== "ยกเลิก" && order.paidType === "โอนผ่านธนาคาร") // กรองเฉพาะออเดอร์ที่จ่ายผ่านธนาคาร
+                .reduce((total, order) => total + order.totalPrice, 0)
+                .toLocaleString()} ฿`,
+            bgColor: "#ffe4c5",
+            icon: <AccountBalanceIcon sx={{ color: "#fca644", fontSize: 50 }} />
+        },        
     ];
 
     const getTopMenus = (filteredOrders, foods, categoryFilter) => {
@@ -171,7 +190,7 @@ const Dashboard = () => {
             {/* ข้อมูลสรุป */}
             <Grid container spacing={2} mb="8px">
                 {data.map((item, index) => (
-                    <Grid item sm={6} md={3} key={index}>
+                    <Grid item sm={6} md={4} key={index}>
                         <Paper sx={{ width: "100%", height: "80px", padding: "14px", display: "flex", alignItems: "center", backgroundColor: item.bgColor }}>
                             <Grid container sx={{ flexGrow: 1, alignItems: "center", justifyContent: "space-between" }}>
                                 <Grid item>
@@ -299,15 +318,23 @@ const Dashboard = () => {
 
                         {/* ตารางด้านขวา */}
                         <Grid item xs={12} md={5}>
-                            <p style={{ fontSize: 20, fontWeight: 500, marginBottom: "8px" }}>รายการวัตถุดิบทั้งหมด</p>
+                            <p style={{ fontSize: 20, fontWeight: 500, marginBottom: "8px" }}>วัตถุดิบที่ปริมาณ<span style={{color:"#ff7878"}}>คงเหลือ</span>น้อยกว่า<span style={{color:"#ff7878"}}>ขั้นต่ำ</span></p>
                             <Paper sx={{ height: 400, width: '100%' }}>
                                 <DataGrid
-                                    rows={ingredients}
+                                    rows={ingredients.filter(item => item.remain < item.min)} // กรองเฉพาะที่ remain น้อยกว่า min
                                     getRowId={(row) => row._id} // ใช้ _id เป็น id
                                     columns={[
                                         { field: 'name', headerName: 'ชื่อวัตถุดิบ', flex: 1 },
-                                        { field: 'remain', headerName: 'คงเหลือ', type: 'number', flex: 1, align: 'right', headerAlign: 'right' },
+                                        { field: 'group', headerName: 'หมวดหมู่', flex: 1 },
+                                        { field: 'remain', headerName: 'คงเหลือ', type: 'number', flex: 1, align: 'right', headerAlign: 'right',
+                                            renderCell: (params) => (
+                                                <span style={{ color: params.row.min > params.row.remain ? '#ff7878' : 'inherit' }}>
+                                                    {params.value}
+                                                </span>
+                                            ) },
+                                         ,
                                         { field: 'min', headerName: 'ขั้นต่ำ', type: 'number', flex: 1, align: 'right', headerAlign: 'right' },
+                                        { field: 'unit', headerName: 'หน่วย', flex: 1, align: 'right', headerAlign: 'right' },
                                     ]}
                                     sx={{fontFamily:"inherit"}}
                                     pageSize={10}

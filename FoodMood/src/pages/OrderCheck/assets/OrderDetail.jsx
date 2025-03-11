@@ -109,7 +109,6 @@ const OrderDetail = ({ selectedOrder, onClose, updateOrder }) => {
                     <p>{selectedOrder.orderDate}</p>
                     <p>{selectedOrder.orderTime}</p>
                 </Grid>
-
                 <Grid item xs={12} style={{ display: "flex", justifyContent: "center" }}>
                     <p style={{ color: "#ff7878", fontWeight: 500, fontSize: 20 }}>{selectedOrder.orderType}</p>
                 </Grid>
@@ -121,6 +120,9 @@ const OrderDetail = ({ selectedOrder, onClose, updateOrder }) => {
                                 ? `เบอร์โทร ${selectedOrder.contactInfo.phoneNumber}`
                                 : "ไม่ระบุโต๊ะหรือเบอร์โทร"}
                     </p>
+                </Grid>
+                <Grid item xs={12} style={{ display: "flex", justifyContent: "center" }}>
+                    <p style={{ color: "#62c965", fontWeight: 500, fontSize: 20 }}>{selectedOrder.paidType}</p>
                 </Grid>
             </Grid>
 

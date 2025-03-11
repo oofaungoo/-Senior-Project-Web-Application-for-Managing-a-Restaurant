@@ -83,11 +83,6 @@ const Noti = () => {
                                         จากจำนวนขั้นต่ำ <strong style={{ color: "red" }}>&nbsp;{noti.min} {noti.unit}&nbsp;</strong>
                                     </p>
                                 </Typography>
-                                <Typography variant="body2" color="text.secondary">
-                                    <p style={{ fontSize: 20, lineHeight: 2 }}>
-                                        อาจส่งผลต่อเมนู
-                                    </p>
-                                </Typography>
                                 <Typography variant="caption" color="text.secondary">
                                     <p style={{ fontSize: 18, lineHeight: 2 }}>📅 {noti.time}</p>
                                 </Typography>
