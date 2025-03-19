@@ -18,6 +18,8 @@ const OrderCheck = () => {
     const [filterCategory, setFilterCategory] = useState("all");
     const [searchQuery, setSearchQuery] = useState("");
 
+    console.log(data);
+
     // API: Fetch data from server
     useState(() => {
         const token = localStorage.getItem("token");

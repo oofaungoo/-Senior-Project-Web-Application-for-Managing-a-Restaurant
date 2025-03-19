@@ -82,7 +82,7 @@ const Noti = () => {
                                         <strong style={{ color: "red" }}> &nbsp;{noti.remain} {noti.unit}&nbsp;</strong>
                                         จากจำนวนขั้นต่ำ <strong style={{ color: "red" }}>&nbsp;{noti.min} {noti.unit}&nbsp;</strong>
                                     </p>
-                                </Typography>
+                                </Typography>   
                                 <Typography variant="caption" color="text.secondary">
                                     <p style={{ fontSize: 18, lineHeight: 2 }}>📅 {noti.time}</p>
                                 </Typography>

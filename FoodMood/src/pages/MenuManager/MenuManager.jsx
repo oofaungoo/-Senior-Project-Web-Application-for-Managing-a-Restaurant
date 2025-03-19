@@ -24,6 +24,7 @@ const MenuManager = () => {
     const [dataToDelete, setDataToDelete] = useState(null);         // Delete data
 
     const [saveState, setSaveState] = useState(false);
+    
     // API: Fetch data from database
     useEffect(() => {
         const token = localStorage.getItem("token");
