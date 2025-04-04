@@ -91,7 +91,7 @@ const Dashboard = () => {
             icon: <PaymentsIcon sx={{ color: "#ac73ee", fontSize: 50 }} />
         },
         {
-            label: "ยอดเงินโอนผ่าน Mobile Banking",
+            label: "ยอดเงินโอน Mobile Banking",
             value: `${filteredOrders
                 .filter(order => order.orderStatus !== "ยกเลิก" && order.paidType === "โอนผ่านธนาคาร") // กรองเฉพาะออเดอร์ที่จ่ายผ่านธนาคาร
                 .reduce((total, order) => total + order.totalPrice, 0)
@@ -190,7 +190,7 @@ const Dashboard = () => {
             {/* ข้อมูลสรุป */}
             <Grid container spacing={2} mb="8px">
                 {data.map((item, index) => (
-                    <Grid item sm={6} md={4} key={index}>
+                    <Grid item xs={12} sm={6} md={4} key={index}>
                         <Paper sx={{ width: "100%", height: "80px", padding: "14px", display: "flex", alignItems: "center", backgroundColor: item.bgColor }}>
                             <Grid container sx={{ flexGrow: 1, alignItems: "center", justifyContent: "space-between" }}>
                                 <Grid item>

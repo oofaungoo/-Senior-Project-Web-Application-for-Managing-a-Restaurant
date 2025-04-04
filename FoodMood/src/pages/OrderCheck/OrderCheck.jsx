@@ -92,12 +92,10 @@ const OrderCheck = () => {
                 sx={{ backgroundColor: "#fff", width: isMobile ? "100%" : isTablet ? "65%" : "75%", height: "100vh", padding: "20px", borderRadius: "8px", overflowY: "auto", marginRight: "10px", }}
             >
                 {/* Search Bar */}
-                <div className="search-bar">
-                    <input type="text" placeholder="ค้นหาด้วยเลขออเดอร์" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
-                </div>
+                <input type="text" placeholder="ค้นหาด้วยเลขออเดอร์" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
 
                 {/* Status Filter */}
-                <div className="filter-bubble-container" style={{ marginTop: "10px" }}>
+                <div className="filter-bubble-container" style={{ marginTop: "10px", flexWrap: 'wrap' }}>
                     {statusOptions.map((option) => (
                         <div key={option.id} style={{ whiteSpace: "nowrap" }} className={`filter-bubble ${filterStatus.includes(option.id) ? "active" : ""}`}
                             onClick={() => handleStatusChange(option.id)}

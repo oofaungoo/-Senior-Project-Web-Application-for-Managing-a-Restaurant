@@ -24,8 +24,8 @@ router.post('/', async (req, res) => {
             name: name,
             group: group,
             unit: unit,
-            remain: Number(remain || 0),
-            min: Number(min || 0)
+            remain: Number(parseFloat(remain || 0).toFixed(2)),
+            min: Number(parseFloat(min || 0).toFixed(2))
         });
 
         const newData = await data.save();
@@ -38,7 +38,6 @@ router.post('/', async (req, res) => {
 router.put('/:id', async (req, res) => {
     try {
         const id = req.params.id;
-
         const data = await dataDB.findById(id);
 
         if (!data) return res.status(404).json({ message: 'ไม่พบวัตถุดิบในระบบ' });
@@ -53,14 +52,13 @@ router.put('/:id', async (req, res) => {
             data.unit = req.body.unit;
         }
         if (req.body.remain != null) {
-            data.remain = req.body.remain;
+            data.remain = Number(parseFloat(req.body.remain).toFixed(2));
         }
         if (req.body.min != null) {
-            data.min = req.body.min;
+            data.min = Number(parseFloat(req.body.min).toFixed(2));
         }
 
         const updatedData = await data.save();
-
         res.json(updatedData);
     } catch (error) {
         res.status(400).json({ message: error.message });

@@ -25,14 +25,8 @@ const OrderList = ({ orders, selectOrder }) => {
         <Grid container spacing={1}>
             {orders?.length > 0 ? (
                 orders.map((data) => (
-                    <Grid item xs={5} md={4} lg={2} key={data.orderNumber}>
-                        <Button
-                            style={{
-                                height: "100%",
-                                width: "100%",
-                                display: "flex"
-                            }}
-                        >
+                    <Grid item xs={12} md={4} lg={2} key={data.orderNumber}>
+                        <Button style={{height: "100%", width: "100%", display: "flex"}}>
                             <Paper
                                 sx={{
                                     width: "100%",
@@ -48,13 +42,7 @@ const OrderList = ({ orders, selectOrder }) => {
                             >
                                 {/* หมายเลขออเดอร์ตรงกลาง */}
                                 <p
-                                    style={{
-                                        fontSize: 24,
-                                        textAlign: "center",
-                                        fontWeight: "bold",
-                                        borderBottom: "1px solid #ddd",
-                                        marginBottom: "8px",
-                                    }}
+                                    style={{ fontSize: 24, textAlign: "center", fontWeight: "500", borderBottom: "1px solid #ddd", marginBottom: "8px"}}
                                 >
                                     #{data.orderNumber}
                                 </p>
