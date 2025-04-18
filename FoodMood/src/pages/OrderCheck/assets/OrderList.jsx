@@ -14,7 +14,7 @@ const OrderList = ({ orders, selectOrder }) => {
         "กำลังทำ": "#fffbf5",
         "พร้อมเสิร์ฟ": "#f8fdef",
     };
-    const orderTypeColots = {
+    const orderTypeColors = {
         "ทานที่ร้าน": "#64A2FF",
         "กลับบ้าน": "#ff7878",
         "Delivery": "#4CAF50",
@@ -49,7 +49,7 @@ const OrderList = ({ orders, selectOrder }) => {
 
                                 {/* โต๊ะ/เบอร์โทร + วันที่ + เวลา */}
                                 <div style={{ textAlign: "center", flex: 1 }}>
-                                    <p style={{ color: orderTypeColots[data.orderType], fontWeight: 500, fontSize: 20 }}>{data.orderType}</p>
+                                    <p style={{ color: orderTypeColors[data.orderType], fontWeight: 500, fontSize: 20 }}>{data.orderType}</p>
                                     <p>
                                         {data.contactInfo.tableNumber
                                             ? `โต๊ะที่ ${data.contactInfo.tableNumber}`

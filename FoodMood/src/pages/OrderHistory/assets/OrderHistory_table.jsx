@@ -3,21 +3,19 @@ import { DataGrid } from '@mui/x-data-grid';
 
 const OrderHistory_table = ({ data = [], onSelectOrder }) => {
 
-    const filteredOrders = data.filter((order) => {
-        const includedStatuses = ["เสร็จสิ้น", "ยกเลิก"];
-        return includedStatuses.includes(order.orderStatus);
-    });
-
     const columns = [
-        { field: 'orderNumber', headerName: 'Order No.', flex:1 },
-        { field: 'orderDate', headerName: 'วันที่สั่ง', flex:1 },
-        { field: 'orderTime', headerName: 'เวลาที่สั่ง', flex:1 },
-        { field: 'orderFinishTime', headerName: 'เวลาที่เสร็จ', flex:1 },
-        { field: 'totalPrice', headerName: 'ราคา', flex:1, type: 'number', align: 'left', headerAlign: 'left' },
+        { field: 'orderNumber', headerName: 'Order No.', flex:1, minWidth: 80 },
+        { field: 'employeeName', headerName: 'พนักงาน', flex:1, minWidth: 120 },
+        { field: 'orderDate', headerName: 'วันที่สั่ง', flex:1, minWidth: 120 },
+        { field: 'orderTime', headerName: 'เวลาที่สั่ง', flex:1, minWidth: 120 },
+        { field: 'orderFinishTime', headerName: 'เวลาที่เสร็จ', flex:1, minWidth: 120 },
+        { field: 'orderType', headerName: 'ประเภทการสั่ง', flex:1, minWidth: 120 },
+        { field: 'totalPrice', headerName: 'ราคา', flex:1, type: 'number', align: 'left', headerAlign: 'left', minWidth: 120 },
         {
             field: 'orderStatus',
             headerName: 'สถานะออเดอร์',
-           flex:1 , 
+            flex:1 ,
+            minWidth: 120,
             renderCell: (params) => (
                 <span className={params.value === 'เสร็จสิ้น' ? 'text-blue' : params.value === 'ยกเลิก' ? 'text-red' : ''}>
                     {params.value}

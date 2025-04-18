@@ -6,40 +6,40 @@ const IngredientTable = ({ data = [], onEdit, handleClickConfirm }) => {
     const [paginationModel, setPaginationModel] = useState({ pageSize: 20, page: 0 });
 
     const columns = [
-        { field: 'name', headerName: 'วัตถุดิบ', width: 140, flex: 1,
+        { field: 'name', headerName: 'วัตถุดิบ', minWidth: 140, flex: 1,
             renderCell: (params) => (
                 <span style={{ color: params.row.min > params.row.remain ? '#ff7878' : 'inherit' }}>
                     {params.value}
                 </span>
             ) },
-        { field: 'group', headerName: 'หมวดหมู่', width: 140, flex: 1,
+        { field: 'group', headerName: 'หมวดหมู่', minWidth: 140, flex: 1,
             renderCell: (params) => (
                 <span style={{ color: params.row.min > params.row.remain ? '#ff7878' : 'inherit' }}>
                     {params.value}
                 </span>
             ) },
         {
-            field: 'remain', headerName: 'คงเหลือ', type: 'number', width: 140, flex: 1, headerAlign: 'left', align: 'left',
+            field: 'remain', headerName: 'คงเหลือ', type: 'number', minWidth: 140, flex: 1, headerAlign: 'left', align: 'left',
             renderCell: (params) => (
                 <span style={{ color: params.row.min > params.row.remain ? '#ff7878' : 'inherit' }}>
                     {params.value}
                 </span>
             )
         },
-        { field: 'min', headerName: 'ขั้นต่ำ', type: 'number', width: 140, flex:1, headerAlign: 'left', align: 'left',
+        { field: 'min', headerName: 'ขั้นต่ำ', type: 'number', minWidth: 140, flex:1, headerAlign: 'left', align: 'left',
             renderCell: (params) => (
                 <span style={{ color: params.row.min > params.row.remain ? '#ff7878' : 'inherit' }}>
                     {params.value}
                 </span>
             ) },
-        { field: 'unit', headerName: 'หน่วย', width: 70, flex: 1,
+        { field: 'unit', headerName: 'หน่วย', minWidth: 100, flex: 1,
             renderCell: (params) => (
                 <span style={{ color: params.row.min > params.row.remain ? '#ff7878' : 'inherit' }}>
                     {params.value}
                 </span>
             ) },
         {
-            field: 'actions', headerName: 'Edit & Delete', width: 120, flex: 1, sortable: false,
+            field: 'actions', headerName: 'Edit & Delete', minWidth: 140, flex: 1, sortable: false,
             renderCell: (params) => (
                 <>
                     <button className="edit-btn" onClick={() => onEdit(params.row)}>✏️</button>

@@ -82,6 +82,12 @@ const OrderDetail = ({ selectedOrder, onClose, updateOrder }) => {
             .catch(err => console.error('Error updating order status:', err));
     };
 
+    const orderTypeColors = {
+        "ทานที่ร้าน": "#64A2FF",
+        "กลับบ้าน": "#ff7878",
+        "Delivery": "#4CAF50",
+        "สั่งแบบไม่ต้องจ่าย": "#ff63ff",
+    }
 
     return (
         <>
@@ -110,7 +116,7 @@ const OrderDetail = ({ selectedOrder, onClose, updateOrder }) => {
                     <p>{selectedOrder.orderTime}</p>
                 </Grid>
                 <Grid item xs={12} style={{ display: "flex", justifyContent: "center" }}>
-                    <p style={{ color: "#ff7878", fontWeight: 500, fontSize: 20 }}>{selectedOrder.orderType}</p>
+                    <p style={{ color: orderTypeColors[selectedOrder.orderType], fontWeight: 500, fontSize: 20 }}>{selectedOrder.orderType}</p>
                 </Grid>
                 <Grid item xs={12} style={{ display: "flex", justifyContent: "center" }}>
                     <p>

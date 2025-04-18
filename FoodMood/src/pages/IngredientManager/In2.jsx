@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
 
 const IngredientManager = () => {
     const isMobile = useMediaQuery("(max-width: 767px)");
-    const isTablet = useMediaQuery("(min-width: 768px) and (max-width: 1040px)");
+    const isTablet = useMediaQuery("(min-width: 768px) and (max-width: 1180px)");
     const navigate = useNavigate();
 
     const [data, setData] = useState([]);   // Collecting datas from API
@@ -46,7 +46,15 @@ const IngredientManager = () => {
     const handleSaveData = (updatedData) => {
         if (isEditing) {
             axios.put(`http://localhost:5000/api/ingredients/${dataToEdit._id}`, updatedData)
-                .then(res => { setData(data.map(user => (user._id === res.data._id ? res.data : user))); })
+                .then(res => {
+                    setData(data.map(user => (user._id === res.data._id ? res.data : user)));
+                    Swal.fire({
+                        title: 'แก้ไขสำเร็จ!',
+                        confirmButtonColor: '#64A2FF',
+                        icon: 'success',
+                    });
+                }
+                )
                 .catch(err => console.error('Failed to update user:', err));
         } else {
             axios.post('http://localhost:5000/api/ingredients', updatedData)
@@ -77,7 +85,6 @@ const IngredientManager = () => {
                 });
             });
     }
-
 
     // Edit function
     const handleEditData = (data) => {

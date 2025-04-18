@@ -23,7 +23,7 @@ const AddIngredient = ({ data, onClose, onSave, isEditing }) => {
         group: '',
         min: null,
         remain: null,
-        unit: 'kg',
+        unit: 'g',
     });
 
     // API: Fetch "data" form database (Data already exist in database)
@@ -31,7 +31,7 @@ const AddIngredient = ({ data, onClose, onSave, isEditing }) => {
         setEditedData({
             name: data.name,
             group: data.group,
-            unit: data.unit || 'kg',
+            unit: data.unit || 'g',
             remain: data.remain,
             min: data.min,
         });
@@ -75,10 +75,9 @@ const AddIngredient = ({ data, onClose, onSave, isEditing }) => {
 
             <Grid container sx={{ display: "flex", alignItems: "center", marginBottom: "8px", paddingBottom: "8px", borderBottom: "1px solid #ddd" }}>
                 <label>หน่วยวัตถุดิบ</label>
-                <select id="unit" value={editedData.unit || 'kg'} onChange={handleChange}>
-                    <option value="kg">กิโลกรัม</option>
+                <select id="unit" value={editedData.unit || 'g'} onChange={handleChange}>
                     <option value="g">กรัม</option>
-                    <option value="ขีด">ขีด</option>
+                    <option value="kg">กิโลกรัม</option>
                 </select>
             </Grid>
 

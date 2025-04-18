@@ -25,6 +25,13 @@ const OrderHistory_detail = ({ selectedOrder, onClose, updateOrder }) => {
         return <p>ไม่มีข้อมูลออเดอร์</p>;
     }
 
+    const orderTypeColors = {
+            "ทานที่ร้าน": "#64A2FF",
+            "กลับบ้าน": "#ff7878",
+            "Delivery": "#4CAF50",
+            "สั่งแบบไม่ต้องจ่าย": "#ff63ff",
+        }
+        
     return (
         <>
             <Grid container sx={{ borderBottom: "2px solid #ddd", paddingBottom: "8px", position: "relative", display: "flex", justifyContent: "center", alignItems: "center" }}>

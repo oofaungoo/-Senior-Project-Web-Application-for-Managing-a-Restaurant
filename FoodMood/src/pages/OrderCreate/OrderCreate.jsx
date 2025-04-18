@@ -13,7 +13,7 @@ import QR_img from "../../images/qr_code.png"
 
 const OrderCreate = () => {
     const isMobile = useMediaQuery("(max-width: 767px)");
-    const isTablet = useMediaQuery("(min-width: 768px) and (max-width: 1040px)");
+    const isTablet = useMediaQuery("(min-width: 768px) and (max-width: 1180px)");
     const navigate = useNavigate();
 
     const [showSelectedMenu, setShowSelectedMenu] = useState(false);    //ใช้สำหรับ Mobile
