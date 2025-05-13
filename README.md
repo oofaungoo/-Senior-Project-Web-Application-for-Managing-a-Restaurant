@@ -14,6 +14,7 @@ API:       Axios
    https://github.com/oofaungoo/-Senior-Project-Web-Application-for-Managing-a-Restaurant
    ```
 2. Install Dependencies
+
    Front-end
    ```
    cd FoodMood
@@ -24,7 +25,7 @@ API:       Axios
    cd backend
    npm install
    ```
-3. Run the Project
+4. Run the Project
    Front-end
    ```
    cd FoodMood
