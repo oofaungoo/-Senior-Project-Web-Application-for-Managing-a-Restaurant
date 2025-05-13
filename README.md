@@ -3,9 +3,13 @@
 This is a senior project to build a web-based point-of-sale (POS) system to help a restaurant manage operations efficiently.
 
 ## 🚀 Technologies Used
+
 Front-end: JavaScript, HTML, CSS, React.js, Material UI (MUI)
+
 Back-end:  Node.js, Express.js, Mongoose
+
 Database:  MongoDB
+
 API:       Axios
 
 ## How to Run the Project
