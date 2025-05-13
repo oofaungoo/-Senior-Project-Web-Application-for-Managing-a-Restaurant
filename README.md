@@ -1,6 +1,14 @@
 # Web Application for Managing a Restaurant
 
-This is a senior project to build a web-based point-of-sale (POS) system to help a restaurant manage operations efficiently.
+This is a senior project that involves developing a web-based point-of-sale (POS) system to support efficient restaurant management and enhance customer service.
+
+## 📦 Features
+
+- 🍽️ Menu Management — Add and edit menus with images, prices, sizes, ingredients, and customizable options
+- 🛒 Order Handling — Create new orders, track current ones, and view order history
+- 📊 Sales Dashboard — Visualize sales performance, best-selling dishes, and ingredient usage statistics
+- 👥 User Management — Manage employee accounts with different roles (e.g., cashier, chef, waiter)
+- 📦 Ingredient Inventory — Track ingredient remaining and usage across the menu
 
 ## 🚀 Technologies Used
 
@@ -11,6 +19,12 @@ This is a senior project to build a web-based point-of-sale (POS) system to help
 🗄️ Database:  MongoDB
 
 🔌 API:       Axios
+
+## ✅ Project Status
+
+📅 Last Updated: May 13, 2025
+
+🚀 Status:       Completed
 
 ## ⚙️ How to Run the Project
 1. Clone the Repository
