@@ -89,7 +89,7 @@ const Sidebar = () => {
         { to: '/OrderCreate', label: 'สร้างออเดอร์', icon: <NoteAddRoundedIcon />, roles: ['1', '6', '7'] },
         { to: '/OrderCheck', label: 'ออร์เดอร์ปัจจุบัน', icon: <FileCopyRoundedIcon />, roles: ['1', '2', '3', '4', '5', '6', '7'] },
         { to: '/OrderHistory', label: 'ประวัติออเดอร์', icon: <FindInPageRoundedIcon />, roles: ['1', '2', '3', '4', '5', '6', '7'] },
-        { to: '/IngredientManagement', label: 'จัดการวัตถุดิบ', icon: <InboxRoundedIcon />, roles: ['1', '6', '7'] },
+        { to: '/IngredientManagement', label: 'จัดการวัตถุดิบ', icon: <InboxRoundedIcon />, roles: ['1', '6'] },
         { to: '/MenuManager', label: 'จัดการเมนูอาหาร', icon: <FastfoodRoundedIcon />, roles: ['1', '6'] },
         { to: '/UserManager', label: 'จัดการผู้ใช้', icon: <PeopleAltRoundedIcon />, roles: ['1'] },
         { to: '/Dashboard', label: 'Dashboard', icon: <AutoGraphIcon />, roles: ['1', '6'] },

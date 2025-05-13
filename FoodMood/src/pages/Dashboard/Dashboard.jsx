@@ -303,7 +303,7 @@ const Dashboard = () => {
                     <Grid container spacing={2}>
                         {/* กราฟด้านซ้าย */}
                         <Grid item xs={12} md={7}>
-                            <p style={{ fontSize: 20, fontWeight: 500, marginBottom: "8px" }}>จำนวนวัตถุดิบคงเหลือต่อวัตถุดิบขั้นต่ำ</p>
+                            <p style={{ fontSize: 20, fontWeight: 500, marginBottom: "8px" }}>จำนวนวัตถุดิบคงเหลือต่อวัตถุดิบขั้นต่ำ<span style={{color:"#ff7878"}}>ที่คงเหลือน้อย</span>{'\u00A0'}(5 อันดับแรก)</p>
                             <ResponsiveContainer width="100%" height={300}>
                                 <BarChart data={lowStockIngredients}>
                                     <XAxis dataKey="name" />
