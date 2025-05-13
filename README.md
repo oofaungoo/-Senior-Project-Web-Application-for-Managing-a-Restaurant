@@ -26,6 +26,7 @@ API:       Axios
    npm install
    ```
 4. Run the Project
+
    Front-end
    ```
    cd FoodMood
