@@ -29,7 +29,7 @@ This is a senior project that involves developing a web-based point-of-sale (POS
 ## ⚙️ How to Run the Project
 1. Clone the Repository
    ```
-   https://github.com/oofaungoo/-Senior-Project-Web-Application-for-Managing-a-Restaurant
+   git clone https://github.com/oofaungoo/-Senior-Project-Web-Application-for-Managing-a-Restaurant
    ```
 2. Install Dependencies
 
