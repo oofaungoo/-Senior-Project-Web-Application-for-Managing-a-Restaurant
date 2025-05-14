@@ -1,6 +1,6 @@
 # Web Application for Managing a Restaurant
 
-This is a senior project that involves developing a web-based point-of-sale (POS) system to support efficient restaurant management and enhance customer service.
+**FoodMood** is a senior project that involves developing a web-based point-of-sale (POS) system to support efficient restaurant management and enhance customer service.
 
 ## 📦 Features
 
@@ -22,7 +22,7 @@ This is a senior project that involves developing a web-based point-of-sale (POS
 
 ## ✅ Project Status
 
-📅 Last Updated: May 13, 2025
+📅 Last Updated: 13/05/2025
 
 🚀 Status:       Completed
 
